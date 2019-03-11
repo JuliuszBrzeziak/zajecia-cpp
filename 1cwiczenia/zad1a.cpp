@@ -30,11 +30,11 @@ class myClass
     }
 
     void printDataa(){
-        cout << "-------------" << endl;
+        cout << "--------------" << endl;
         cout << imie << " " << nazwisko << endl;
         cout << ulica << " " << nr_domu << endl;
         cout << kod_pocztowy << " " << miejscowosc << endl;
-        cout << "-------------" << endl;
+        cout << "--------------" << endl;
     }
 };
 
