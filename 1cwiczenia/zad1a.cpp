@@ -4,7 +4,7 @@ using namespace std;
 
 class myClass
 {
-    public:
+    private:
 
 
     string imie, nazwisko, ulica, nr_domu, kod_pocztowy, miejscowosc;
