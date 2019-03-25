@@ -14,8 +14,16 @@ int main(){
         cout << tab[i];
     }
 
+//deklaracja tablicy 2 wymiarowej
+    char two_tab[3][5];
+
+    char ch;
+    ch = two_tab[2][4];
+    //lub
+    two_tab[0][0] = 'x';
 
 
+    cout << two_tab[0][0] << endl;
 
 
     return 0;
