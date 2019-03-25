@@ -10,12 +10,12 @@ public:
     int poj;
 
     Pojazd(int p);
-    ~Pojazd();
+    virtual ~Pojazd();
 };
 
-Pojazd::Pojazd(int p)
+Pojazd::Pojazd(int p) :poj(p)
 {
-    poj = p;
+    
 }
 
 Pojazd::~Pojazd()
@@ -25,13 +25,13 @@ Pojazd::~Pojazd()
 class Tram : public Pojazd
 {
 private:
-    /* data */
+    
 public:
-  //  Tram();
-  // ~Tram();
+    Tram(int p);
+   virtual ~Tram();
 };
-/*
-Tram::Tram()
+
+Tram::Tram(int p) : Pojazd(p)
 {
     //poj = d;
 }
@@ -40,7 +40,7 @@ Tram::~Tram()
 {
 }
 
-*/
+
 
 
 int main(){
@@ -50,7 +50,7 @@ int main(){
 
     Pojazd sam(2);
     Pojazd mot(1);
-    //Tram tra;
+    Tram tra();
 
 
     cout << sam.poj << mot.poj << endl;
