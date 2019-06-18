@@ -1,4 +1,5 @@
 #include <windows.h>
+#include <tchar.h>
 
 //nazwa klasy, dzieki temu kompilator nie płacze
 char nazwa[] = "Klasa Okienka";
@@ -54,7 +55,7 @@ int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystą
 
     //rejestruje klase i sprawdza czy się udało
     if(!RegisterClassEx(&wc)/*zwraca niezerową wartosc if udasie*/){
-        MessageBox(NULL,"ok","nok",MB_OK);
+        MessageBox(NULL,_T("Hello"),_T("Title"),MB_OK);
         return 1;
     }
 
@@ -76,18 +77,18 @@ int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystą
     HWND  hwnd;
 
     //to będzie nasze okno
-    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, NazwaKlasy, "Oto okienko",
+    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, NazwaKlasy, _T("Oto okienko"),
 WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 240 ,120, NULL, NULL, hInstance, NULL );
 
     //obsulga bledu
     if(hwnd == NULL)
     {
-        MessageBox(NULL,"okno error","okno error",MB_YESNO);
+        MessageBox(NULL,_T("okno error"),_T("okno error"),MB_YESNO);
         return 2;
     }
 
     //tworzymy przycisk
-    g_hPrzycisk = CreateWindowEx( 0, "BUTTON", "Nasz przycisk", WS_CHILD | WS_VISIBLE,
+    g_hPrzycisk = CreateWindowEx( 0, _T("BUTTON"), _T("Nasz przycisk"), WS_CHILD | WS_VISIBLE,
 100, 100, 150, 30, hwnd, NULL, hInstance, NULL );
 
 
@@ -127,7 +128,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
     //reakcja na guzik
     case WM_COMMAND:
         if(( HWND ) lParam == g_hPrzycisk ) //lParm zawiera uchwyt kontrolki kóra wyg. komunikat, (HWND) konwertuje do odp. typu
-            MessageBox( hwnd, "Nacisnąłeś przycisk!", "Ha!", MB_ICONINFORMATION );
+            MessageBox( hwnd, _T("Nacisnąłeś przycisk!"), _T("Ha!"), MB_ICONINFORMATION );
         break;
         
         default:

@@ -1,4 +1,5 @@
 #include <windows.h>
+#include <tchar.h>
 
 //nazwa klasy, dzieki temu kompilator nie płacze
 char nazwa[] = "Klasa Okienka";
@@ -49,7 +50,7 @@ int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystą
 
     //sprawdza czy się udało
     if(!RegisterClassEx(&wc)/*zwraca niezerową wartosc if udasie*/){
-        MessageBox(NULL,"ok","nok",MB_OK);
+        MessageBox(NULL,_T("ok"),_T("nok"),MB_OK);
         return 1;
     }
 
@@ -71,13 +72,13 @@ int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystą
     HWND  hwnd;
 
     //to będzie nasze okno
-    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, NazwaKlasy, "Oto okienko",
+    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, NazwaKlasy, _T("Oto okienko"),
 WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 240 ,120, NULL, NULL, hInstance, NULL );
 
     //obsulga bledu
     if(hwnd == NULL)
     {
-        MessageBox(NULL,"okno error","okno error",MB_YESNO);
+        MessageBox(NULL,_T("okno error"),_T("okno error"),MB_YESNO);
         return 2;
     }
 
