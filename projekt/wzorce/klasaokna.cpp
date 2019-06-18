@@ -43,7 +43,7 @@ int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystą
     //nazwa id menu okna zasobów
     wc.lpszMenuName = NULL;
     //nazwa klasy
-    wc.lpszClassName = NazwaKlasy;
+    wc.lpszClassName =  NazwaKlasy;
     //mała ikonka
     wc.hIconSm = LoadIcon( NULL, IDI_APPLICATION );
 
