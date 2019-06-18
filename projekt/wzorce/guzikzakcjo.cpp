@@ -125,7 +125,9 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             WS_VISIBLE|WS_CHILD|WS_BORDER,
             20,50,100,20,
             hwnd,
-            NULL,NULL,NULL
+            (HMENU) 1, //to będzie przekazane do WM_COMMAND
+            NULL,
+            NULL
         );
 
         break;
@@ -133,6 +135,20 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
     case WM_CLOSE:
         DestroyWindow( hwnd ); //niszczy okienko
         break;
+
+    case WM_COMMAND:
+        switch (LOWORD(wParam)) //Tutaj wybiera się parametr przekazywany przez guziki
+        {
+        case 1:
+            MessageBeep(MB_ICONERROR);//BIP!!!
+            break;
+        
+        default:
+            break;
+        }
+
+
+    break;
 
     // 
     case WM_DESTROY:
