@@ -3,7 +3,7 @@
 
 //########################################################################################################
 //
-//                      Wcztuje z pliku i wypisuje
+//                      wpisuje do pliku
 //
 //###############################################################################################################
 
@@ -151,17 +151,19 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
         {
         case 1:
             LPSTR Bufor;
-DWORD dwRozmiar, dwPrzeczyt;
+DWORD dwRozmiar, dwPrzeczyt,dwZapisane;
 HANDLE hPlik;
 
-hPlik = CreateFile( "test.txt", GENERIC_READ, 0, NULL, OPEN_EXISTING, 0, NULL );
+
+
+hPlik = CreateFile( "test.txt", GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, NULL );
 if( hPlik == INVALID_HANDLE_VALUE ) {
     MessageBox( NULL, "Nie można otworzyć pliku.", "A to pech!", MB_ICONEXCLAMATION );
     PostQuitMessage( 0 ); // Zakończ program
 }
 
-dwRozmiar = GetFileSize( hPlik, NULL );
-if( dwRozmiar == 0xFFFFFFFF ) {
+dwRozmiar = GetWindowTextLength( hwnd );
+if( dwRozmiar == 0 ) {
     MessageBox( NULL, "Nieprawidłowy rozmiar pliku!", "Niedobrze...", MB_ICONEXCLAMATION );
     PostQuitMessage( 0 ); // Zakończ program
 }
@@ -172,17 +174,16 @@ if( Bufor == NULL ) {
     PostQuitMessage( 0 ); // Zakończ program
 }
 
-if( !ReadFile( hPlik, Bufor, dwRozmiar, & dwPrzeczyt, NULL ) ) {
-    MessageBox( NULL, "Błąd czytania z pliku", "Dupa blada!", MB_ICONEXCLAMATION );
+GetWindowText( hwnd, Bufor, dwRozmiar ); // skopiuj do bufora tekst z jakiegoś okna
+Bufor[ dwRozmiar ] = 0; // dodaj zero na końcu stringa
+
+if( !WriteFile( hPlik, Bufor, dwRozmiar, & dwZapisane, NULL ) ) {
+    MessageBox( NULL, "Błąd zapisu do pliku", "Dupa blada!", MB_ICONEXCLAMATION );
     PostQuitMessage( 0 ); // Zakończ program
 }
 
-Bufor[ dwRozmiar ] = 0; // dodaj zero na końcu stringa
-//SetWindowText( hwnd, Bufor ); // zrób coś z tekstem, np. wyświetl go
-MessageBeep(MB_ICONERROR);
-MessageBox(hwnd,Bufor,"hello",MB_OK); // wyświetla go
 GlobalFree( Bufor ); // Zwolnij bufor
-CloseHandle( hPlik ); // Zamknij plik
+CloseHandle( hPlik ); // Zamknij plik // Zamknij plik
             break;
         
         default:
