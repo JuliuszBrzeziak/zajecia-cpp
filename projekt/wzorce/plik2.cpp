@@ -13,8 +13,7 @@ MSG Komunikat;
 //prototyp WndProc
 LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam );
 
-HWND textfield,button,textbox;
-char textsaved[20];
+HWND textfield,button;
 
 int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystąpienia aplikacji*/HINSTANCE hPrevInstance,
 /*linia poleceń*/ LPSTR lpCmdLine,/*stan okna*/ int nCmdShow )
@@ -79,7 +78,7 @@ int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystą
     _T("Oto okienko"),
     WS_OVERLAPPEDWINDOW, 
     CW_USEDEFAULT, 
-    CW_USEDEFAULT, 550 ,550, NULL, NULL, hInstance, NULL );
+    CW_USEDEFAULT, 240 ,120, NULL, NULL, hInstance, NULL );
 
     //obsulga bledu
     if(hwnd == NULL)
@@ -113,23 +112,23 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
 
 
     case WM_CREATE:
-        textbox = CreateWindow(
-            "EDIT",
-            "",
-            WS_BORDER|WS_CHILD|WS_VISIBLE,
-            20,20,200,20,
-            hwnd,
-            NULL,NULL,NULL
-        );
-
-        CreateWindow("BUTTON",
-        "go",
+        textfield = CreateWindow("STATIC",
+        "HELLO",
         WS_VISIBLE|WS_CHILD|WS_BORDER,
-        420,10,70,20,
+        20,20,100,25,
         hwnd,
-        (HMENU) 1,
-        NULL,
-        NULL);
+        NULL,NULL,NULL);
+
+        button = CreateWindow(
+            "BUTTON",
+            "to jest guzik",
+            WS_VISIBLE|WS_CHILD|WS_BORDER,
+            20,50,100,20,
+            hwnd,
+            (HMENU) 1, //to będzie przekazane do WM_COMMAND
+            NULL,
+            NULL
+        );
 
         break;
     //reakcja na czerwony krzyżyk
@@ -140,12 +139,42 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
     case WM_COMMAND:
         switch (LOWORD(wParam)) //Tutaj wybiera się parametr przekazywany przez guziki
         {
-        case 1:{
-            int gwstat = 0;
-            gwstat = GetWindowText(textbox,&textsaved[0],20);//wkłada tekst do tablicy 
-            MessageBox(hwnd,textsaved,"hello",MB_OK); // wyświetla go
+        case 1:
+            LPSTR Bufor;
+DWORD dwRozmiar, dwPrzeczyt;
+HANDLE hPlik;
+
+hPlik = CreateFile( "test.txt", GENERIC_READ, 0, NULL, OPEN_EXISTING, 0, NULL );
+if( hPlik == INVALID_HANDLE_VALUE ) {
+    MessageBox( NULL, "Nie można otworzyć pliku.", "A to pech!", MB_ICONEXCLAMATION );
+    PostQuitMessage( 0 ); // Zakończ program
+}
+
+dwRozmiar = GetFileSize( hPlik, NULL );
+if( dwRozmiar == 0xFFFFFFFF ) {
+    MessageBox( NULL, "Nieprawidłowy rozmiar pliku!", "Niedobrze...", MB_ICONEXCLAMATION );
+    PostQuitMessage( 0 ); // Zakończ program
+}
+
+Bufor =( LPSTR ) GlobalAlloc( GPTR, dwRozmiar + 1 );
+if( Bufor == NULL ) {
+    MessageBox( NULL, "Za mało pamięci!", "Ale wiocha...", MB_ICONEXCLAMATION );
+    PostQuitMessage( 0 ); // Zakończ program
+}
+
+if( !ReadFile( hPlik, Bufor, dwRozmiar, & dwPrzeczyt, NULL ) ) {
+    MessageBox( NULL, "Błąd czytania z pliku", "Dupa blada!", MB_ICONEXCLAMATION );
+    PostQuitMessage( 0 ); // Zakończ program
+}
+
+Bufor[ dwRozmiar ] = 0; // dodaj zero na końcu stringa
+//SetWindowText( hwnd, Bufor ); // zrób coś z tekstem, np. wyświetl go
+MessageBeep(MB_ICONERROR);
+MessageBox(hwnd,Bufor,"hello",MB_OK); // wyświetla go
+GlobalFree( Bufor ); // Zwolnij bufor
+CloseHandle( hPlik ); // Zamknij plik
             break;
-        }
+        
         default:
             break;
         }
