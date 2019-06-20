@@ -37,7 +37,7 @@ class Liczby{
         }
 
         tabs = sil;
-
+        delete [] sil;
     }
     
 };
