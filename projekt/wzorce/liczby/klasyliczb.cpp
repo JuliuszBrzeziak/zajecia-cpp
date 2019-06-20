@@ -50,10 +50,10 @@ class Liczba{
         cout << "element " <<i<<" to "<< tab[i] <<  endl;
     }
     
-    //zwraca taba liczby
+    //zwraca ilość elementów taba
     //OK
     int tab_Size(){
-        return sizeof(tab)/sizeof(tab[0]);
+        return tab.size();
     }
 
     //wypisuje tab
@@ -63,6 +63,38 @@ class Liczba{
             cout << tab[k] << ",";
         }
     }
+
+    //sprawdza czy tab jest pusty, jeśli tak to wpisuje do niego fib
+    //OK
+    void fib_tab(int n){
+        if(0 != tab_Size()){
+            cout << "fib_tab error: niezerowa wielkośc tablicy" << endl;
+            exit(1);
+        } else{
+            tab = {0,1,1};
+            for(int i = 3; i<=n; i++){
+                tab.push_back(tab[i-1] + tab[i - 2]);
+            }
+        }
+    }
+
+    //sprawdza czy tab jest pusty i wpisuje do niego silnie
+    //NIEDZIAŁA
+    void sil_tab(int n){
+        tab[0]=1;
+        int k;
+        
+        if(0 != tab_Size()){
+            cout << "fib_tab error: niezerowa wielkośc tablicy" << endl;
+            exit(1);
+        } else{
+            for(int i =1;i<n;i++){
+              
+                tab.push_back( *(tab.end()-1) * i);
+            }
+        }
+    }
+    
 
 
     //Funkcja testowa
@@ -78,10 +110,17 @@ class Liczba{
         //vec2[3]=883;
         
 
+        //sprawdza fib_tab
+        cout <<"fib_tab ";
+        sil_tab(5);
+        Wypisz_tab();
+        cout<<"  jesli jest \"0,1,1,2,3,5\" to dobrze"<<endl;
+
 
         //sprawdza działanie wczytaj_tab wewnętrznego wektora
         Wczytaj_tab(vec2);
         cout <<"wczytaj_tab wewnątrz:" <<tab[2] << "  jeżeli 882 to dobrze"<< endl;
+        cout << "tab_size " << tab_Size() << " powinno być 5" << endl;
 
         //sprawdza wczytaj_tab wektorów zewnętrznych
         Wczytaj_tab(vec);
@@ -99,12 +138,13 @@ class Liczba{
         Wypisz_tabi(2);
 
         //sprawdza tab_size
-        cout << "tab_size " << tab_Size() << " powinno być 3" << endl;
+        cout << "tab_size " << tab_Size() << " powinno być 4" << endl;
 
         //sprawdza wypisz_tab
         cout << "wypisz tab";
         Wypisz_tab();
         cout << "powinno być \"883,883,883,\" "<<endl;
+
     }
 
 };
@@ -112,7 +152,7 @@ class Liczba{
 int main(){
 
     Liczba licz;
-    int arr[3]={0,1,882};
+    int arr[4]={0,1,882,1};
 
     int *ar;
     ar = arr;
@@ -120,11 +160,11 @@ int main(){
 
     licz.test(885,arr,arv);
 
-    //licz.Wczytaj_tab(arv);
+    licz.Wczytaj_tab(arv);
 
 
 
 
-    cout << "zamykam się!"<<endl;
+    cout << licz.tab_Size() <<  "zamykam się!"<<endl;
     return 0;
 }
