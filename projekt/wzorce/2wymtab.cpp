@@ -1,35 +1,54 @@
 #include<iostream>
 #include<string>
+#include "liczby.h"
+//#include "liczby.cpp"
 
 using namespace std;
 
+
+
+
 int **  tab2(int a, int b){
 
-    int** tab = new int*[a];
+    int** tabb = new int*[a];
     int i,j;
     a++;
 
+
+
     for( i=0;i<=4;i++){
-        tab[i] = new int[a];
+        tabb[i] = new int[a];
         for ( j = 0; j <= 4; j++)
         {
-            tab[i][j] = j*i;
+            tabb[i][j] = j*i;
         }
         
     }
 
-    return tab;
+    return tabb;
 
 }
 
 int main(int argc, char const *argv[])
 {
 
+
+    Liczby lim;
+    
     int **arr;
+    int *ar;
+
+   // ar[1] = 2;
 
     arr = tab2(4,3);
 
-    cout << arr[4][4] << endl;
+    lim.tab2 = arr;
+    cout <<  "hej"   << endl;
+    //lim.tab = ar;
+    //lim.Si(1);
+
+    
+    cout <<  "hej"   << "xxx"<< endl;
     
     return 0;
 }
