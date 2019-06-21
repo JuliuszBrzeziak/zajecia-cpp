@@ -3,6 +3,10 @@
 #include <string>
 #include <bitset>
 #include <algorithm>
+#include <cmath>
+#include <cstdlib>
+#include "bitmap_image.hpp"
+
 
 using namespace std;
 
@@ -127,13 +131,42 @@ class Liczba{
         }
     }
 
-
+    //printuje mojego stringa bitów
+    //OK
     void prtstr(){
         for(int i =0; i<str_Size();i++){
             cout << str[i] << endl;
         }
     }
 
+    //printuje długość stringa
+    void nl(){
+        cout << str[0].length() << endl;
+        cout << str[0][2] << endl;
+    }
+
+
+    void rysuj(){
+        struct point_t { double x,y; };
+
+        const int canvas_width  = 200;//ustalenie szerokości mapy
+        const int canvas_height = 200;//ustalenie wysokości
+
+        cartesian_canvas canvas(canvas_width,canvas_height);
+
+        point_t pnt = {0,0};
+        for(int i = 0; i <= str_Size();i++){
+            for(int j = 0; j< str[0].length(); j++ ){
+
+                if(str[i][j]==1){
+                    canvas.plot_pixel(j,i);
+                }
+
+            }
+        }
+
+        canvas.image().save_image("plot.bmp");
+    }
 
     //Funkcja testowa
     void test(int i,int talbica[],vector<int> vec){
@@ -188,7 +221,10 @@ class Liczba{
         itrs();
         prtstr();
 
+        nl();
 
+        rysuj();
+    
     }
 
 };
