@@ -140,12 +140,14 @@ class Liczba{
     }
 
     //printuje długość stringa
+    //OK
     void nl(){
         cout << str[0].length() << endl;
         cout << str[0][2] << endl;
     }
 
-
+    //rysuje bit po bicie daną liczbę
+    //NIEDZIAŁA
     void rysuj(){
         struct point_t { double x,y; };
 
@@ -158,8 +160,8 @@ class Liczba{
         for(int i = 0; i <= str_Size();i++){
             for(int j = 0; j< str[0].length(); j++ ){
 
-                if(str[i][j]==1){
-                    canvas.plot_pixel(j,i);
+                if('1'==str[i][j]){
+                    canvas.plot_pixel(i,j);
                 }
 
             }
