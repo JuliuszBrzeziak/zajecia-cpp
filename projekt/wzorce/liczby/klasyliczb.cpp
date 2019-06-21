@@ -1,5 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <bitset>
+#include <algorithm>
 
 using namespace std;
 
@@ -28,6 +31,7 @@ class Liczba{
     //chwilowo umieszczono tutaj tab i l też
     vector<int> tab;
     int l;
+    vector<string> str;
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //#############################################################
 
@@ -55,6 +59,10 @@ class Liczba{
     int tab_Size(){
         return tab.size();
     }
+
+    int str_Size(){
+        return str.size();
+    }    
 
     //wypisuje tab
     //OK
@@ -85,8 +93,8 @@ class Liczba{
         int k;
         
         if(0 != tab_Size()){
-            cout << "fib_tab error: niezerowa wielkośc tablicy" << endl;
-            exit(1);
+            cout << "sil_tab error: niezerowa wielkośc tablicy" << endl;
+            exit(2);
         } else{
             tab={1};
             for(int i =1;i<n;i++){
@@ -95,7 +103,36 @@ class Liczba{
             }
         }
     }
-    
+
+    //spr czy tab i str jest pusty i wkleja odwrócony bit
+    //OK
+    void itrs(){
+
+        if(0 == tab_Size()){
+            cout << "itrs error: zerowa wielkośc tablicy liczb" << endl;
+            exit(3); 
+        }
+
+        if(0 != str_Size()){
+            cout << "itrs error: niezerowa wielkośc tablicy" << endl;
+            exit(4);
+        } else{
+            string s;
+            for(int i = 0; i <= tab_Size(); i++){
+                s = bitset< 128 >(tab[i]).to_string();
+                reverse(s.begin(),s.end());
+                str.push_back(s);
+            }
+            
+        }
+    }
+
+
+    void prtstr(){
+        for(int i =0; i<str_Size();i++){
+            cout << str[i] << endl;
+        }
+    }
 
 
     //Funkcja testowa
@@ -145,6 +182,12 @@ class Liczba{
         cout << "wypisz tab";
         Wypisz_tab();
         cout << "powinno być \"883,883,883,\" "<<endl;
+
+        //sprawdza prtspr
+        cout << "prtspr" <<endl;
+        itrs();
+        prtstr();
+
 
     }
 
