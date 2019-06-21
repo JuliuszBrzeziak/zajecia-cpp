@@ -79,7 +79,7 @@ class Liczba{
     }
 
     //sprawdza czy tab jest pusty i wpisuje do niego silnie
-    //NIEDZIAŁA
+    //OK
     void sil_tab(int n){
         
         int k;
