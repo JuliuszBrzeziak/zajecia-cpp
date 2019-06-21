@@ -81,13 +81,14 @@ class Liczba{
     //sprawdza czy tab jest pusty i wpisuje do niego silnie
     //NIEDZIAŁA
     void sil_tab(int n){
-        tab[0]=1;
+        
         int k;
         
         if(0 != tab_Size()){
             cout << "fib_tab error: niezerowa wielkośc tablicy" << endl;
             exit(1);
         } else{
+            tab={1};
             for(int i =1;i<n;i++){
               
                 tab.push_back( *(tab.end()-1) * i);
@@ -112,7 +113,7 @@ class Liczba{
 
         //sprawdza fib_tab
         cout <<"fib_tab ";
-        sil_tab(5);
+        sil_tab(4);
         Wypisz_tab();
         cout<<"  jesli jest \"0,1,1,2,3,5\" to dobrze"<<endl;
 
