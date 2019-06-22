@@ -16,37 +16,27 @@ struct point_t { double x,y; };
 
 int main()
 {
-    const int canvas_width  = 10;//ustalenie szerokości mapy
-    const int canvas_height = 10;//ustalenie wysokości
 
-    cartesian_canvas canvas(canvas_width,canvas_height); //ustalenie że obraz będzie kartezjański
+struct point_t { double x,y; };
 
-    //canvas.setup_canvas(255, 150, 50);
+        const int canvas_width  = 10;//ustalenie szerokości mapy
+        const int canvas_height = 200;//ustalenie wysokości
 
-    point_t pnt = {200,200};
-    point_t vers ={1,1};/* 
-    for(int i = 0; i<3000;i++){
-        pnt.x -= vers.x;
-        pnt.y -= vers.y;
+        cartesian_canvas canvas(canvas_width,canvas_height);
 
-        canvas.plot_pen_pixel(pnt.x,pnt.y);//rusyje kropkę w danym miejscu
+        point_t pnt = {0,0};
+        for(int i = 0; i <= str_Size();i++){
+            for(int j = 0; j< str[0].length(); j++ ){
+
+                if('1'==str[i][j]){
+                    canvas.plot_pixel(i,j);
+                }
+
+            }
+        }
+
+        canvas.image().save_image("plot.bmp");
     }
-
-*/
-    pnt = {-5,-5}; //ustawiam się w lewym dolnym rogu
-    for (int j = 0; j < 200; j++)
-    {
-        pnt.x += 1;
-
-        canvas.plot_pixel(pnt.x, pnt.y);
-    }
-    
-   
-   
-    canvas.image().save_image("mybmp.bmp");//zapisuje
-   
-
-
 
     return 0;
 }

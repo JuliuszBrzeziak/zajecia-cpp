@@ -108,6 +108,18 @@ class Liczba{
         }
     }
 
+    void nat_tab(int n){
+        if(0 != tab_Size()){
+            cout << "nat_tab error: niezerowa wielkośc tablicy" << endl;
+            exit(3);
+        } else {
+            tab={0};
+            for (int i = 1; i<n;i++){
+                tab.push_back(i);
+            }
+        }
+    }
+
     //spr czy tab i str jest pusty i wkleja odwrócony bit
     //OK
     void itrs(){
@@ -225,28 +237,11 @@ class Liczba{
 
         nl();
 
+        //nat_tab(20);
+
         //rysuj();
         cout << "koniec testu"<<endl;
     }
 
 };
 
-int main(){
-
-    Liczba licz;
-    int arr[4]={0,1,882,1};
-
-    int *ar;
-    ar = arr;
-    vector <int> arv(3,883);
-
-    licz.test(885,arr,arv);
-
-    licz.Wczytaj_tab(arv);
-
-
-
-
-    cout << licz.tab_Size() <<  "zamykam się!"<<endl;
-    return 0;
-}
