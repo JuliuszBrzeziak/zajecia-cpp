@@ -126,9 +126,9 @@ string addBinary(string a, string b)
             tab = {1,1,1};
             its();
             for(int i = 3; i<=n; i++){
-                ss =  addBitStrings(str[i-1], str[i - 2]);
+                //ss =  addBitStrings(str[i-1], str[i - 2]);
                 //tab.push_back(tab[i-1] + tab[i - 2]);
-                str.push_back( ss );
+                //str.push_back( ss );
             }
         }
     }
