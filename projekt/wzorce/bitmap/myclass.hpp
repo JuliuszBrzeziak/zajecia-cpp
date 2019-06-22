@@ -33,7 +33,7 @@ class Liczba{
     //#############################################################
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //chwilowo umieszczono tutaj tab i l też
-    vector<int> tab;
+    vector<unsigned long long  int> tab;
     int l;
     vector<string> str;
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -41,9 +41,9 @@ class Liczba{
 
     //bierze tablicę inta i wpisuje go w tabelę tab Liczby
     //OK
-    void Wczytaj_tab(vector<int> tab){
-        this->tab=tab;
-    }
+    //void Wczytaj_tab(vector<unsigned long int> tab){
+    //    this->tab=tab;
+    //}
 
 
     //bierze inta i wpisuje go w l Liczby
@@ -187,7 +187,7 @@ class Liczba{
 
         int tablica2[5]={0,1,2,3,4};
         int i2=884;
-        vector<int> vec2(5,3);
+        vector<unsigned long long int> vec2(5,3);
 
         //vec2[0]=88;
         //vec2[1]=881;
@@ -203,12 +203,12 @@ class Liczba{
 
 
         //sprawdza działanie wczytaj_tab wewnętrznego wektora
-        Wczytaj_tab(vec2);
+        //Wczytaj_tab(vec2);
         cout <<"wczytaj_tab wewnątrz:" <<tab[2] << "  jeżeli 882 to dobrze"<< endl;
         cout << "tab_size " << tab_Size() << " powinno być 5" << endl;
 
         //sprawdza wczytaj_tab wektorów zewnętrznych
-        Wczytaj_tab(vec);
+        //Wczytaj_tab(vec);
         cout <<"wczytaj_tab zewnątrz:" <<tab[2] << "  jeżeli 883 to dobrze"<< endl;
 
         //sprawdza działanie wewnętrznego wczytaj_l

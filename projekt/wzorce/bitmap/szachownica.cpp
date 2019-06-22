@@ -38,13 +38,13 @@ int main()
     const int canvas_height = 1000;//ustalenie wysokości
 
     Liczba lic;
-    lic.nat_tab(10000);
+    lic.sil_tab(100);
     lic.itrs();
     //lic.prtstr();
     cartesian_canvas canvas(canvas_width,canvas_height);
 
     point_t pnt = {-canvas_width/2,canvas_height/2};
-        for(int i = 0; i <= 10000;i++){
+        for(int i = 0; i <= 100;i++){
             for(int j = 0; j< 100; j++ ){
 
                 if('1'==lic.str[i][j]){
