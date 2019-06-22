@@ -139,7 +139,7 @@ string addBinary(string a, string b)
             string ss;
             int a = 1;
 
-            string s1 = bitset< 128 >(a).to_string();
+            string s1 = bitset< 200 >(a).to_string();
           
             str.push_back(s1);
             str.push_back(s1);
@@ -191,6 +191,31 @@ string addBinary(string a, string b)
                 tab.push_back(i);
             }
         }
+    }
+
+    void nat_str(int n){
+    cout << "elo1" <<endl;
+            string ss;
+            int a = 1;
+
+            string s1 = bitset< 200 >(a).to_string();
+          
+            str.push_back(s1);
+            
+
+
+           // str[4]= s2;
+            cout << "elo2" << endl;
+            //its();
+            for(int i = 1; i<=n; i++){
+                ss =  addBinary(str[i-1], s1);
+                //reverse(ss.begin(),ss.end());
+                //cout << ss <<endl <<endl;
+                //reverse(ss.begin(),ss.end());
+                //tab.push_back(tab[i-1] + tab[i - 2]);
+                str.push_back( ss );
+            }
+        
     }
 
     //spr czy tab i str jest pusty i wkleja odwrócony bit
@@ -340,7 +365,7 @@ string addBinary(string a, string b)
         cout << "koniec testu"<<endl;
     }
 
-    
+
 };
 
 
@@ -359,12 +384,12 @@ int main()
 
     //li.test(885,arr,arv);
 
-    const int canvas_width  = 150;//ustalenie szerokości mapy
+    const int canvas_width  = 200;//ustalenie szerokości mapy
     const int canvas_height = 1000;//ustalenie wysokości
 
     Liczba lic;
-    lic.l = 150;
-    lic.fib_str(1000);
+    lic.l = 200;
+    lic.nat_str(1000);
     //lic.itrs();
     //lic.prtstr();
     cartesian_canvas canvas(canvas_width,canvas_height);
@@ -389,9 +414,9 @@ int main()
     point_t pnt = {-canvas_width/2,canvas_height/2};
      
         for(int i = 0; i <= 1000;i++){
-            for(int j = 0; j< 100; j++ ){
+            for(int j = 0; j<199; j++ ){
                 
-                if('1'==lic.str[i][127 - j]){
+                if('1'==lic.str[i][199 - j]){
                     canvas.plot_pixel(pnt.x + j,pnt.y - i);
                 }
                 //    cout << "tak" ;
