@@ -24,7 +24,9 @@ class Liczba{
     ////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //#############################################################
     
+    private:
     
+    vector<string> str;
 
 
     //i publiczne metody
@@ -37,7 +39,7 @@ class Liczba{
     //chwilowo umieszczono tutaj tab i l też
     vector<unsigned long long  int> tab;
     int l;
-    vector<string> str;
+
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //#############################################################
 
@@ -530,6 +532,14 @@ class Liczba{
     }
 
 
+    int test(int i,int j){
+        if('1'==str[i][j]){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 };
 /* 
 class Tablica : public Liczba {
@@ -575,7 +585,7 @@ int main()
     const int canvas_height = m;//ustalenie wysokości
 
 
-    li.pell_str(k);
+    li.nat_str(k);
     
     cartesian_canvas canvas(canvas_width,canvas_height);
 
@@ -585,7 +595,7 @@ int main()
         for(int i = 0; i <= k;i++){
             for(int j = 0; j< l; j++ ){
                 
-                if('1'==li.str[i][l -1  - j]){
+                if(1==li.test(i,l-1-j)){
                     canvas.plot_pixel(pnt.x + j,pnt.y - i);
                 }
 
