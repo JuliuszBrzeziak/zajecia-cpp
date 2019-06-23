@@ -685,6 +685,17 @@ class Tablica : public Liczba {
 
     }
 
+    int vstr_size(){
+        int i = vstr.size();
+        i--;
+        return i;
+    }
+
+    char par(int i, int j){
+        cout << vstr[0][0].at(199) << endl;
+        return vstr[0][0].at(199);
+    }
+
 
 };
 
@@ -710,7 +721,7 @@ int main()
 
     Tablica tbl;
 
-    tbl.pascal21(4);
+    tbl.pascal21(3);
 
     cout << "hii" << endl;
 
@@ -718,10 +729,13 @@ int main()
     << tbl.vstr[1][1] << endl << tbl.vstr[2][0] <<
     tbl.vstr[2][1] << tbl.vstr[2][2] << endl<<
     tbl.vstr[3][0]<< " " << tbl.vstr[3][1]<< " " << tbl.vstr[3][2]<< " " <<
-    tbl.vstr[3][3];
+    tbl.vstr[3][3] << endl;
 
+    cout << tbl.vstr.size() << tbl.vstr_size() << endl;
 
     double p;
+
+    tbl.par(0,0);
 
     //cin >> p;
  
