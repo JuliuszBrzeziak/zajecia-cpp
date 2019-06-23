@@ -592,7 +592,98 @@ class Liczba{
 class Tablica : public Liczba {
 
     public:
-    vector< vector<string> > vstr;
+    vector<vector<string> >vstr;
+
+    //trójkąt paskala w vstr
+    //OK
+    void pascal(int n){
+
+        //vector <int> vec,vec1;
+
+        int a = 1;
+
+        string i1 = bitset< 200 >(a).to_string();
+        
+
+        vector <string> vecp;
+        vecp.push_back(i1);
+
+        vstr.push_back(vecp);
+
+        vecp.push_back(i1);
+
+        vstr.push_back(vecp);
+
+        
+        for(int i = 2; i <=n; i++){
+
+            cout <<"elo";
+
+            vector <string> vec;
+            vec.push_back(i1);
+
+            for(int j = 1; j <i; j++){
+
+                vec.push_back(addBinary(vstr[i-1][j-1],vstr[i-1][j]));
+
+            }
+
+            vec.push_back(i1);
+
+            vstr.push_back(vec);
+
+            vec.clear();
+	        vec.shrink_to_fit();
+
+        }
+
+
+    }
+
+    void pascal21(int n){
+
+        int a = 1;
+        int b = 2;
+
+        string i1 = bitset< 200 >(a).to_string();
+        string i2 = bitset< 200 >(b).to_string();
+
+        vector <string> vecp;
+        vecp.push_back(i1);
+
+        vstr.push_back(vecp);
+
+        vecp.clear();
+	    vecp.shrink_to_fit();
+
+        vecp.push_back(i2);
+        vecp.push_back(i1);
+
+        vstr.push_back(vecp);
+
+        for(int i = 2; i <=n; i++){
+
+            cout <<"elo";
+
+            vector <string> vec;
+            vec.push_back(i2);
+
+            for(int j = 1; j <i; j++){
+
+                vec.push_back(addBinary(vstr[i-1][j-1],vstr[i-1][j]));
+
+            }
+
+            vec.push_back(i1);
+
+            vstr.push_back(vec);
+
+            vec.clear();
+	        vec.shrink_to_fit();
+
+        }
+
+    }
 
 
 };
@@ -603,7 +694,7 @@ int main()
 
     struct point_t { double x,y; };
     
-
+/* 
     Liczba li;
     int arr[4]={0,1,882,1};
 
@@ -615,9 +706,19 @@ int main()
     cout << "hii" << endl;
 
     //tbl.vstr[0][0] = "elo";
-    
+    */
+
+    Tablica tbl;
+
+    tbl.pascal21(4);
 
     cout << "hii" << endl;
+
+    cout << tbl.vstr[0][0] << endl << tbl.vstr[1][0] 
+    << tbl.vstr[1][1] << endl << tbl.vstr[2][0] <<
+    tbl.vstr[2][1] << tbl.vstr[2][2] << endl<<
+    tbl.vstr[3][0]<< " " << tbl.vstr[3][1]<< " " << tbl.vstr[3][2]<< " " <<
+    tbl.vstr[3][3];
 
 
     double p;
@@ -630,7 +731,7 @@ int main()
     const int l = 200; //ilość bitów
     const int canvas_width  = n;//ustalenie szerokości mapy
     const int canvas_height = m;//ustalenie wysokości
-
+/*
     vector <string> vc;
 
     li.tkvec(li.jac_str(3));
@@ -658,7 +759,7 @@ int main()
         }
     cout<< "fibtab przeszedł" << endl;
     canvas.image().save_image("plot2.bmp");
-    
+     */
     cout << "zamykam sie" << endl;
     return 0;
 }
