@@ -11,9 +11,6 @@
 using namespace std;
 
 
-
-
-
 //nadrzędna klasa
 class Liczba{
 
@@ -44,26 +41,17 @@ class Liczba{
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //#############################################################
 
-    //bierze tablicę inta i wpisuje go w tabelę tab Liczby
+
+
+
+    //dodaje do siebie dwie binarne i wypluwa stringa binarnego
     //OK
-    //void Wczytaj_tab(vector<unsigned long int> tab){
-    //    this->tab=tab;
-    //}
-
-
-
-
-
-string addBinary(string a, string b) 
-{ 
-    string result = ""; // Initialize result 
-    int s = 0;          // Initialize digit sum 
-  
-    // Travers both strings starting from last 
-    // characters 
-    int i = a.size() - 1, j = b.size() - 1; 
-    while (i >= 0 || j >= 0 || s == 1) 
-    { 
+    string addBinary(string a, string b) { 
+        string result = ""; // Initialize result 
+        int s = 0;          // Initialize digit sum 
+        int i = a.size() - 1, j = b.size() - 1; 
+        while (i >= 0 || j >= 0 || s == 1) 
+        { 
         // Comput sum of last digits and carry 
         s += ((i >= 0)? a[i] - '0': 0); 
         s += ((j >= 0)? b[j] - '0': 0); 
@@ -76,15 +64,11 @@ string addBinary(string a, string b)
   
         // Move to next digits 
         i--; j--; 
+        } 
+        return result; 
     } 
-    return result; 
-} 
 
 
-    void testadd(string a,string b){
-        string ss = addBinary(a,b);
-        cout << ss <<endl;
-    }
     //bierze inta i wpisuje go w l Liczby
     //OK
     void Wczytaj_l(int a){
@@ -103,6 +87,8 @@ string addBinary(string a, string b)
         return tab.size();
     }
 
+    //zwraca długość str
+    //OK
     int str_Size(){
         return str.size();
     }    
@@ -134,34 +120,6 @@ string addBinary(string a, string b)
     }
 
 
-    void fib_str(int n){
-        cout << "elo1" <<endl;
-            string ss;
-            int a = 1;
-
-            string s1 = bitset< 200 >(a).to_string();
-          
-            str.push_back(s1);
-            str.push_back(s1);
-            str.push_back(s1);
-
-
-           // str[4]= s2;
-            cout << "elo2" << endl;
-            //its();
-            for(int i = 3; i<=n; i++){
-                ss =  addBinary(str[i-1], str[i - 2]);
-                //reverse(ss.begin(),ss.end());
-                //cout << ss <<endl <<endl;
-                //reverse(ss.begin(),ss.end());
-                //tab.push_back(tab[i-1] + tab[i - 2]);
-                str.push_back( ss );
-            }
-            
-
-        
-    }
-
 
     //sprawdza czy tab jest pusty i wpisuje do niego silnie
     //OK
@@ -181,6 +139,8 @@ string addBinary(string a, string b)
         }
     }
 
+    //naturalna tablica
+    //OK
     void nat_tab(int n){
         if(0 != tab_Size()){
             cout << "nat_tab error: niezerowa wielkośc tablicy" << endl;
@@ -193,6 +153,8 @@ string addBinary(string a, string b)
         }
     }
 
+    //naturalny bin string
+    //OK
     void nat_str(int n){
     cout << "elo1" <<endl;
             string ss;
@@ -241,9 +203,9 @@ string addBinary(string a, string b)
         }
     }
 
-
-
-     void its(){
+    //zamienia int tab w str bin
+    //OK
+    void its(){
 
         if(0 == tab_Size()){
             cout << "itrs error: zerowa wielkośc tablicy liczb" << endl;
@@ -280,29 +242,6 @@ string addBinary(string a, string b)
         cout << str[0][2] << endl;
     }
 
-    //rysuje bit po bicie daną liczbę
-    //NIEDZIAŁA
-    void rysuj(){
-        struct point_t { double x,y; };
-
-        const int canvas_width  = 200;//ustalenie szerokości mapy
-        const int canvas_height = 200;//ustalenie wysokości
-
-        cartesian_canvas canvas(canvas_width,canvas_height);
-
-        point_t pnt = {0,0};
-        for(int i = 0; i <= str_Size();i++){
-            for(int j = 0; j< str[0].length(); j++ ){
-
-                if('1'==str[i][j]){
-                    canvas.plot_pixel(i,j);
-                }
-
-            }
-        }
-
-        canvas.image().save_image("plot.bmp");
-    }
 
     //Funkcja testowa
     void test(int i,int talbica[],vector<int> vec){
@@ -366,9 +305,241 @@ string addBinary(string a, string b)
     }
 
 
+    //mnożenie binarnej przez binarną
+    //OK
+    string bbmultiply(string num1, string num2) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        int a = 1;
+        //int b = 0;
+        string j = bitset< 200 >(a).to_string();
+        string ss = num1;
+        for(string i = bitset< 200 >(a).to_string();i!=num2;i = addBinary(i,j)){
+            ss = addBinary(ss,num1);
+            //cout << i<<endl<<j<<endl<<endl;
+        }
+
+        return ss;
+    }
+
+    //mnożenie binarnej przez dec
+    //OK
+    string bdmultiply(string num1,int n){
+        string ss;
+        for(int i=0;i<n;i++){
+            ss = addBinary(ss,num1);
+        }
+        return ss;
+    }
+
+    //ustawia str w silnie
+    //OK
+    void sil_str(int n){
+        cout << "elo1" <<endl;
+
+            int a = 1;
+            int b = str_Size();
+            string ss= bitset< 200 >(a).to_string();;
+            string s1 = bitset< 200>(a).to_string();
+            string s2 = bitset< 200 >(a).to_string();          
+            str.push_back(s1);
+
+            //its();
+            for(int i = 1; i<=n; i++){
+                s2 =  addBinary(s2,s1);
+                ss = bbmultiply(ss,s2);
+
+                str.push_back( ss );
+            }
+        
+    }
+
+    //fibonacci bin string
+    //OK
+    void fib_str(int n){
+
+        string ss;
+        int a = 1;
+
+        string s1 = bitset< 200 >(a).to_string();
+          
+        str.push_back(s1);
+        str.push_back(s1);
+        
+            
+        for(int i = 2; i<=n; i++){
+            ss =  addBinary(str[i-1], str[i - 2]);
+
+            str.push_back( ss );
+        } 
+    }
+    //jacobsthal
+    //OK
+    void jac_str(int n){
+        cout << "elo1" <<endl;
+        string ss;
+        int a = 1;
+
+        string s1 = bitset< 200 >(a).to_string();
+          
+        str.push_back(s1);
+        str.push_back(s1);
+        
+        cout << "elo2" << endl;
+            
+        for(int i = 2; i<=n; i++){
+            ss =  addBinary(str[i-1], bdmultiply(str[i - 2],2));
+
+            str.push_back( ss );
+        } 
+    }
+
+
+    //leonardo
+    //OK
+    void leo_str(int n){
+
+        string ss;
+        int a = 1;
+
+        string s1 = bitset< 200 >(a).to_string();
+          
+        str.push_back(s1);
+        str.push_back(s1);
+        
+            
+        for(int i = 2; i<=n; i++){
+            ss =  addBinary(str[i-1], addBinary(str[i - 2],s1));
+
+            str.push_back( ss );
+        } 
+    }
+
+    //jacobsthal-lucas
+    //OK
+    void jacluc_str(int n){
+        cout << "elo1" <<endl;
+        string ss;
+        int a = 1;
+        int b = 2;
+
+        string s1 = bitset< 200 >(b).to_string();
+        string s2 = bitset< 200 >(a).to_string();
+          
+        str.push_back(s1);
+        str.push_back(s2);
+        
+        cout << "elo2" << endl;
+            
+        for(int i = 2; i<=n; i++){
+            ss =  addBinary(str[i-1], bdmultiply(str[i - 2],2));
+
+            str.push_back( ss );
+        } 
+    }
+
+    //lucas
+    //OK
+    void luc_str(int n){
+
+        string ss;
+        int a = 1;
+        int b = 2;
+
+        string s1 = bitset< 200 >(b).to_string();
+        string s2 = bitset< 200 >(a).to_string();
+          
+        str.push_back(s1);
+        str.push_back(s2);
+            
+        for(int i = 2; i<=n; i++){
+            ss =  addBinary(str[i-1], str[i - 2]);
+
+            str.push_back( ss );
+        } 
+    }
+
+    //padovan
+    //OK
+    void pad_str(int n){
+
+        string ss;
+        int a = 1;
+
+        string s1 = bitset< 200 >(a).to_string();
+          
+        str.push_back(s1);
+        str.push_back(s1);
+        str.push_back(s1);
+        
+            
+        for(int i = 3; i<=n; i++){
+            ss =  addBinary(str[i-2], str[i - 3]);
+
+            str.push_back( ss );
+        } 
+    }
+
+    //perrin
+    //OK
+    void per_str(int n){
+
+        string ss;
+        int a = 3;
+        int b = 0;
+        int c = 2;
+
+
+        string s1 = bitset< 200 >(a).to_string();
+        string s2 = bitset< 200 >(b).to_string();
+        string s3 = bitset< 200 >(c).to_string();
+          
+        str.push_back(s1);
+        str.push_back(s2);
+        str.push_back(s3);
+        
+            
+        for(int i = 3; i<=n; i++){
+            ss =  addBinary(str[i-2], str[i - 3]);
+
+            str.push_back( ss );
+        } 
+    }
+
+    //pell
+    //OK
+    void pell_str(int n){
+        cout << "elo1" <<endl;
+        string ss;
+        int a = 0;
+        int b = 1;
+
+        string s1 = bitset< 200 >(a).to_string();
+        string s2 = bitset< 200 >(b).to_string();
+
+        str.push_back(s1);
+        str.push_back(s2);
+        
+        cout << "elo2" << endl;
+            
+        for(int i = 2; i<=n; i++){
+            ss =  addBinary(str[i-2], bdmultiply(str[i - 1],2));
+
+            str.push_back( ss );
+        } 
+    }
+
+
 };
+/* 
+class Tablica : public Liczba {
+
+    vector< vector<string> vvstr;
 
 
+
+};
+*/
 
 int main()
 {
@@ -382,55 +553,47 @@ int main()
     ar = arr;
     vector <int> arv(3,883);
 
-    //li.test(885,arr,arv);
+/* 
+    const int n = 250; //szerkość kanwy
+    const int m = 500; //wysokość
+    const int k = 1000; // ilość iteracji
+    const int l = 200; //ilość bitów
+    const int canvas_width  = n;//ustalenie szerokości mapy
+    const int canvas_height = m;//ustalenie wysokości
+*/
 
-    const int canvas_width  = 200;//ustalenie szerokości mapy
-    const int canvas_height = 1000;//ustalenie wysokości
 
-    Liczba lic;
-    lic.l = 200;
-    lic.nat_str(1000);
-    //lic.itrs();
-    //lic.prtstr();
+    double p;
+
+    //cin >> p;
+
+    const int n = 250; //szerkość kanwy
+    const int m = 1000; //wysokość
+    const int k = 500; // ilość iteracji
+    const int l = 200; //ilość bitów
+    const int canvas_width  = n;//ustalenie szerokości mapy
+    const int canvas_height = m;//ustalenie wysokości
+
+
+    li.pell_str(k);
+    
     cartesian_canvas canvas(canvas_width,canvas_height);
 
-    cout<< "fibtab przeszedł" << endl;
-
-
-    //string s1 = "10001"; //bitset< 128 >(1).to_string();
-    //string s2 = "10001"; //bitset< 128 >(2).to_string();
-
-    //cout << s1 << " " << s2 << endl;
-
-    //lic.testadd(s1,s2);
-
-    //string ss = lic.addBitStrings(s1,s2);
-
-    //cout << ss << endl;
-
-    //lic.prtstr();
-    
-
+ 
     point_t pnt = {-canvas_width/2,canvas_height/2};
      
-        for(int i = 0; i <= 1000;i++){
-            for(int j = 0; j<199; j++ ){
+        for(int i = 0; i <= k;i++){
+            for(int j = 0; j< l; j++ ){
                 
-                if('1'==lic.str[i][199 - j]){
+                if('1'==li.str[i][l -1  - j]){
                     canvas.plot_pixel(pnt.x + j,pnt.y - i);
                 }
-                //    cout << "tak" ;
-                //} else{
-                //    cout << "nie" ;
-                //}
 
-            }
-            //cout << endl;
+
+            }   
         }
     cout<< "fibtab przeszedł" << endl;
     canvas.image().save_image("plot2.bmp");
-
-    
     
     cout << "zamykam sie" << endl;
     return 0;
