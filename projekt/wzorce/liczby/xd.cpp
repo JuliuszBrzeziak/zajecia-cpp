@@ -26,11 +26,13 @@ class Liczba{
     
     private:
     
-    vector<string> str;
+    
 
 
     //i publiczne metody
     public:
+
+    vector<string> str;
 
     
 
@@ -157,28 +159,30 @@ class Liczba{
 
     //naturalny bin string
     //OK
-    void nat_str(int n){
-    cout << "elo1" <<endl;
-            string ss;
-            int a = 1;
+    vector <string> nat_str(int n){
 
-            string s1 = bitset< 200 >(a).to_string();
+        vector <string> vec;
+        cout << "elo1" <<endl;
+        string ss;
+        int a = 1;
+
+        string s1 = bitset< 200 >(a).to_string();
           
-            str.push_back(s1);
+        vec.push_back(s1);
             
+        // str[4]= s2;
+        cout << "elo2" << endl;
+        //its();
+        for(int i = 1; i<n; i++){
+            ss =  addBinary(vec[i-1], s1);
+            //reverse(ss.begin(),ss.end());
+            //cout << ss <<endl <<endl;
+            //reverse(ss.begin(),ss.end());
+            //tab.push_back(tab[i-1] + tab[i - 2]);
+            vec.push_back( ss );
+        }
 
-
-           // str[4]= s2;
-            cout << "elo2" << endl;
-            //its();
-            for(int i = 1; i<=n; i++){
-                ss =  addBinary(str[i-1], s1);
-                //reverse(ss.begin(),ss.end());
-                //cout << ss <<endl <<endl;
-                //reverse(ss.begin(),ss.end());
-                //tab.push_back(tab[i-1] + tab[i - 2]);
-                str.push_back( ss );
-            }
+        return vec;
         
     }
 
@@ -306,6 +310,10 @@ class Liczba{
         cout << "koniec testu"<<endl;
     }
 
+    void tkvec(vector <string> vec){
+        str = vec;
+    }
+
 
     //mnożenie binarnej przez binarną
     //OK
@@ -336,7 +344,10 @@ class Liczba{
 
     //ustawia str w silnie
     //OK
-    void sil_str(int n){
+    vector <string> sil_str(int n){
+
+        vector <string> vec;
+
         cout << "elo1" <<endl;
 
             int a = 1;
@@ -344,82 +355,99 @@ class Liczba{
             string ss= bitset< 200 >(a).to_string();;
             string s1 = bitset< 200>(a).to_string();
             string s2 = bitset< 200 >(a).to_string();          
-            str.push_back(s1);
+            vec.push_back(s1);
 
             //its();
-            for(int i = 1; i<=n; i++){
+            for(int i = 1; i<n; i++){
                 s2 =  addBinary(s2,s1);
                 ss = bbmultiply(ss,s2);
 
-                str.push_back( ss );
+                vec.push_back( ss );
             }
+
+            return vec;
         
     }
 
     //fibonacci bin string
     //OK
-    void fib_str(int n){
+    vector <string> fib_str(int n){
+
+        vector <string> vec;
 
         string ss;
         int a = 1;
 
         string s1 = bitset< 200 >(a).to_string();
           
-        str.push_back(s1);
-        str.push_back(s1);
+        vec.push_back(s1);
+        vec.push_back(s1);
         
             
-        for(int i = 2; i<=n; i++){
-            ss =  addBinary(str[i-1], str[i - 2]);
+        for(int i = 2; i<n; i++){
+            ss =  addBinary(vec[i-1], vec[i - 2]);
 
-            str.push_back( ss );
+            vec.push_back( ss );
         } 
+
+        return vec;
     }
+
     //jacobsthal
     //OK
-    void jac_str(int n){
+    vector <string> jac_str(int n){
+
+        vector <string> vec;
         cout << "elo1" <<endl;
         string ss;
         int a = 1;
 
         string s1 = bitset< 200 >(a).to_string();
           
-        str.push_back(s1);
-        str.push_back(s1);
+        vec.push_back(s1);
+        vec.push_back(s1);
         
         cout << "elo2" << endl;
             
-        for(int i = 2; i<=n; i++){
-            ss =  addBinary(str[i-1], bdmultiply(str[i - 2],2));
+        for(int i = 2; i<n; i++){
+            ss =  addBinary(vec[i-1], bdmultiply(vec[i - 2],2));
 
-            str.push_back( ss );
+            vec.push_back( ss );
         } 
-    }
 
+        return vec;
+    }
 
     //leonardo
     //OK
-    void leo_str(int n){
+    vector <string> leo_str(int n){
+
+        vector <string> vec;
 
         string ss;
         int a = 1;
 
         string s1 = bitset< 200 >(a).to_string();
           
-        str.push_back(s1);
-        str.push_back(s1);
+        vec.push_back(s1);
+        vec.push_back(s1);
         
             
-        for(int i = 2; i<=n; i++){
-            ss =  addBinary(str[i-1], addBinary(str[i - 2],s1));
+        for(int i = 2; i<n; i++){
+            ss =  addBinary(vec[i-1], addBinary(vec[i - 2],s1));
 
-            str.push_back( ss );
+            vec.push_back( ss );
         } 
+
+        return vec;
     }
 
     //jacobsthal-lucas
     //OK
-    void jacluc_str(int n){
+    vector <string> jacluc_str(int n){
+
+        vector <string> vec;
+
         cout << "elo1" <<endl;
         string ss;
         int a = 1;
@@ -428,21 +456,25 @@ class Liczba{
         string s1 = bitset< 200 >(b).to_string();
         string s2 = bitset< 200 >(a).to_string();
           
-        str.push_back(s1);
-        str.push_back(s2);
+        vec.push_back(s1);
+        vec.push_back(s2);
         
         cout << "elo2" << endl;
             
-        for(int i = 2; i<=n; i++){
-            ss =  addBinary(str[i-1], bdmultiply(str[i - 2],2));
+        for(int i = 2; i<n; i++){
+            ss =  addBinary(vec[i-1], bdmultiply(vec[i - 2],2));
 
-            str.push_back( ss );
+            vec.push_back( ss );
         } 
+
+        return vec;
     }
 
     //lucas
     //OK
-    void luc_str(int n){
+    vector <string> luc_str(int n){
+
+        vector <string> vec;
 
         string ss;
         int a = 1;
@@ -451,40 +483,48 @@ class Liczba{
         string s1 = bitset< 200 >(b).to_string();
         string s2 = bitset< 200 >(a).to_string();
           
-        str.push_back(s1);
-        str.push_back(s2);
+        vec.push_back(s1);
+        vec.push_back(s2);
             
-        for(int i = 2; i<=n; i++){
-            ss =  addBinary(str[i-1], str[i - 2]);
+        for(int i = 2; i<n; i++){
+            ss =  addBinary(vec[i-1], vec[i - 2]);
 
-            str.push_back( ss );
+            vec.push_back( ss );
         } 
+
+        return vec;
     }
 
     //padovan
     //OK
-    void pad_str(int n){
+    vector <string> pad_str(int n){
+
+        vector <string> vec;
 
         string ss;
         int a = 1;
 
         string s1 = bitset< 200 >(a).to_string();
           
-        str.push_back(s1);
-        str.push_back(s1);
-        str.push_back(s1);
+        vec.push_back(s1);
+        vec.push_back(s1);
+        vec.push_back(s1);
         
             
-        for(int i = 3; i<=n; i++){
-            ss =  addBinary(str[i-2], str[i - 3]);
+        for(int i = 3; i<n; i++){
+            ss =  addBinary(vec[i-2], vec[i - 3]);
 
-            str.push_back( ss );
+            vec.push_back( ss );
         } 
+
+        return vec;
     }
 
     //perrin
     //OK
-    void per_str(int n){
+    vector <string> per_str(int n){
+
+        vector <string> vec;
 
         string ss;
         int a = 3;
@@ -496,21 +536,24 @@ class Liczba{
         string s2 = bitset< 200 >(b).to_string();
         string s3 = bitset< 200 >(c).to_string();
           
-        str.push_back(s1);
-        str.push_back(s2);
-        str.push_back(s3);
+        vec.push_back(s1);
+        vec.push_back(s2);
+        vec.push_back(s3);
         
             
-        for(int i = 3; i<=n; i++){
-            ss =  addBinary(str[i-2], str[i - 3]);
+        for(int i = 3; i<n; i++){
+            ss =  addBinary(vec[i-2], vec[i - 3]);
 
-            str.push_back( ss );
-        } 
+            vec.push_back( ss );
+        }
+
+        return vec;
     }
 
     //pell
     //OK
-    void pell_str(int n){
+    vector <string> pell_vstr(int n){
+        vector <string> vec;
         cout << "elo1" <<endl;
         string ss;
         int a = 0;
@@ -519,16 +562,20 @@ class Liczba{
         string s1 = bitset< 200 >(a).to_string();
         string s2 = bitset< 200 >(b).to_string();
 
-        str.push_back(s1);
-        str.push_back(s2);
+        vec.push_back(s1);
+        vec.push_back(s2);
         
         cout << "elo2" << endl;
             
         for(int i = 2; i<=n; i++){
-            ss =  addBinary(str[i-2], bdmultiply(str[i - 1],2));
+            ss =  addBinary(vec[i-2], bdmultiply(vec[i - 1],2));
 
-            str.push_back( ss );
-        } 
+            vec.push_back( ss );
+        }
+
+        cout << "vec" << endl;
+
+        return vec; 
     }
 
 
@@ -541,20 +588,21 @@ class Liczba{
     }
 
 };
-/* 
+
 class Tablica : public Liczba {
 
-    vector< vector<string> vvstr;
-
+    public:
+    vector< vector<string> > vstr;
 
 
 };
-*/
+
 
 int main()
 {
 
     struct point_t { double x,y; };
+    
 
     Liczba li;
     int arr[4]={0,1,882,1};
@@ -563,20 +611,19 @@ int main()
     ar = arr;
     vector <int> arv(3,883);
 
-/* 
-    const int n = 250; //szerkość kanwy
-    const int m = 500; //wysokość
-    const int k = 1000; // ilość iteracji
-    const int l = 200; //ilość bitów
-    const int canvas_width  = n;//ustalenie szerokości mapy
-    const int canvas_height = m;//ustalenie wysokości
-*/
+    Tablica tbl;
+    cout << "hii" << endl;
+
+    //tbl.vstr[0][0] = "elo";
+    
+
+    cout << "hii" << endl;
 
 
     double p;
 
     //cin >> p;
-
+ 
     const int n = 250; //szerkość kanwy
     const int m = 1000; //wysokość
     const int k = 500; // ilość iteracji
@@ -584,9 +631,16 @@ int main()
     const int canvas_width  = n;//ustalenie szerokości mapy
     const int canvas_height = m;//ustalenie wysokości
 
+    vector <string> vc;
 
-    li.nat_str(k);
+    li.tkvec(li.jac_str(3));
+
+    tbl.vstr.push_back(vc);
     
+    li.prtstr();
+
+    //cout << tbl.vstr[0][0]<<endl<<tbl.vstr[0][1]<<endl<<tbl.vstr[0][2]<<endl;
+
     cartesian_canvas canvas(canvas_width,canvas_height);
 
  
