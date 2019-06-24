@@ -602,6 +602,7 @@ class Tablica : public Liczba {
 
     //trójkąt paskala w vstr
     //OK
+    /* 
     void pascal(int n){
 
         //vector <int> vec,vec1;
@@ -645,7 +646,7 @@ class Tablica : public Liczba {
 
 
     }
-
+*/
     void pascal21(int n){
 
         int a = 1;
@@ -801,3 +802,4 @@ int main()
     cout << tbl.test(1,1) << "zamykam sie" << endl;
     return 0;
 }*/
+

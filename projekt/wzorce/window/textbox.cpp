@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <tchar.h>
 #include "hfclass.hpp"
+#include "bitmap_image.hpp"
 
 //nazwa klasy, dzieki temu kompilator nie płacze
 char nazwa[] = "Klasa Okienka";
@@ -16,6 +17,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam );
 
 HWND textfield,button,textbox;
 char textsaved[20];
+int intsaved;
 
 int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystąpienia aplikacji*/HINSTANCE hPrevInstance,
 /*linia poleceń*/ LPSTR lpCmdLine,/*stan okna*/ int nCmdShow )
@@ -155,6 +157,43 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
         case 1:{
             int gwstat = 0;
             gwstat = GetWindowText(textbox,&textsaved[0],20);//wkłada tekst do tablicy 
+            int nt = std::stoi(textsaved);
+            Tablica tbl;
+            const int n = 250; //szerkość kanwy
+            const int m = 1000; //wysokość
+            const int k = nt;
+            const int l = 200; //ilość bitów
+            const int canvas_width  = n;//ustalenie szerokości mapy
+            const int canvas_height = m;//ustalenie wysokości
+
+            tbl.pascal21(k);
+
+            cout <<"hej";
+            tbl.crtpstr();
+            
+
+            cartesian_canvas canvas(canvas_width,canvas_height);
+
+            struct point_t { double x,y; };
+            point_t pnt = {-canvas_width/2,canvas_height/2};
+     
+            for(int i = 0; i <= k;i++){
+                cout <<"e" <<endl;
+                for(int j = 0; j<=i; j++ ){
+
+
+                
+                    if(1==tbl.test(i,j)){
+                        canvas.plot_pixel(pnt.x + j,pnt.y - i);
+                    }
+
+
+                }      
+            }
+            cout<< "fibtab przeszedł" << endl;
+            canvas.image().save_image("plot2.bmp");
+
+
             MessageBox(hwnd,textsaved,"hello",MB_OK); // wyświetla go
             break;
         }
