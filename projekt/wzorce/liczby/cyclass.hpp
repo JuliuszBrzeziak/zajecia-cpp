@@ -722,12 +722,13 @@ class Tablica : public Liczba {
 
 };
 
+/* 
 
 int main()
 {
 
     struct point_t { double x,y; };
-    
+    */
 /* 
     Liczba li;
     int arr[4]={0,1,882,1};
@@ -740,7 +741,7 @@ int main()
     cout << "hii" << endl;
 
     //tbl.vstr[0][0] = "elo";
-    */
+    
 
     Tablica tbl;
 
@@ -749,13 +750,7 @@ int main()
     tbl.pascal21(k);
 
     cout << "hii" << endl;
-/* 
-    cout << tbl.vstr[0][0] << endl << tbl.vstr[1][0] 
-    << tbl.vstr[1][1] << endl << tbl.vstr[2][0] <<
-    tbl.vstr[2][1] << tbl.vstr[2][2] << endl<<
-    tbl.vstr[3][0]<< " " << tbl.vstr[3][1]<< " " << tbl.vstr[3][2]<< " " <<
-    tbl.vstr[3][3] << endl;
-    */
+
 
    tbl.crtpstr();
 
@@ -765,9 +760,7 @@ int main()
 
     double p;
 
-    //tbl.par(0,0);
 
-    //cin >> p;
  
     const int n = 250; //szerkość kanwy
     const int m = 1000; //wysokość
@@ -777,15 +770,6 @@ int main()
     const int canvas_height = m;//ustalenie wysokości
 
 
-    //vector <string> vc;
-
-    //li.tkvec(li.jac_str(3));
-
-    //tbl.vstr.push_back(vc);
-    
-    //li.prtstr();
-
-    //cout << tbl.vstr[0][0]<<endl<<tbl.vstr[0][1]<<endl<<tbl.vstr[0][2]<<endl;
 
     cartesian_canvas canvas(canvas_width,canvas_height);
 
@@ -811,4 +795,4 @@ int main()
      
     cout << tbl.test(1,1) << "zamykam sie" << endl;
     return 0;
-}
+}*/

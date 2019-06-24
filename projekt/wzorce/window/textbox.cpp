@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <tchar.h>
+#include "hfclass.hpp"
 
 //nazwa klasy, dzieki temu kompilator nie płacze
 char nazwa[] = "Klasa Okienka";
@@ -125,9 +126,20 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
         CreateWindow("BUTTON",
         "go",
         WS_VISIBLE|WS_CHILD|WS_BORDER,
-        420,10,70,20,
+        420,10,//położenie
+        70,20,//wielkość
+        hwnd,//hak
+        (HMENU) 1, //argument
+        NULL,
+        NULL);
+
+        CreateWindow("BUTTON",
+        "go",
+        WS_VISIBLE|WS_CHILD|WS_BORDER,
+        200,100,
+        70,20,
         hwnd,
-        (HMENU) 1,
+        (HMENU) 2,
         NULL,
         NULL);
 
@@ -144,6 +156,13 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             int gwstat = 0;
             gwstat = GetWindowText(textbox,&textsaved[0],20);//wkłada tekst do tablicy 
             MessageBox(hwnd,textsaved,"hello",MB_OK); // wyświetla go
+            break;
+        }
+
+        case 2:{
+            int gwstat = 0;
+            gwstat = GetWindowText(textbox,&textsaved[0],20);//wkłada tekst do tablicy 
+            MessageBox(hwnd,textsaved,"hellooooo",MB_OK); // wyświetla go
             break;
         }
         default:
