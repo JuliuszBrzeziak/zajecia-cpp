@@ -593,6 +593,7 @@ class Tablica : public Liczba {
 
     public:
     vector<vector<string> >vstr;
+    vector<string> pstr;
 
     //trójkąt paskala w vstr
     //OK
@@ -602,7 +603,7 @@ class Tablica : public Liczba {
 
         int a = 1;
 
-        string i1 = bitset< 200 >(a).to_string();
+        string i1 = bitset< 512 >(a).to_string();
         
 
         vector <string> vecp;
@@ -617,7 +618,7 @@ class Tablica : public Liczba {
         
         for(int i = 2; i <=n; i++){
 
-            cout <<"elo";
+            //cout <<"elo";
 
             vector <string> vec;
             vec.push_back(i1);
@@ -645,8 +646,8 @@ class Tablica : public Liczba {
         int a = 1;
         int b = 2;
 
-        string i1 = bitset< 200 >(a).to_string();
-        string i2 = bitset< 200 >(b).to_string();
+        string i1 = bitset< 512 >(a).to_string();
+        string i2 = bitset< 512 >(b).to_string();
 
         vector <string> vecp;
         vecp.push_back(i1);
@@ -692,10 +693,32 @@ class Tablica : public Liczba {
     }
 
     char par(int i, int j){
-        cout << vstr[0][0].at(199) << endl;
-        return vstr[0][0].at(199);
+        //cout << vstr[i][j].at(199) << endl;
+        return vstr[i][j].at(511);
     }
 
+    void crtpstr(){
+        for(int i = 0; i <= vstr_size(); i++){
+            string pr;
+            for(int j = 0; j<=i;j++){
+                pr += par(i,j);
+                }
+            cout<<pr<<endl;
+            pstr.push_back(pr);
+            }
+
+        cout << "poszlo";
+        
+    }
+
+    //przeciążona funkcja test z klasy liczba
+    int test(int i,int j){
+        if('1'==pstr[i][j]){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 
 };
 
@@ -721,50 +744,62 @@ int main()
 
     Tablica tbl;
 
-    tbl.pascal21(3);
+    const int k = 300; // ilość iteracji
+
+    tbl.pascal21(k);
 
     cout << "hii" << endl;
-
+/* 
     cout << tbl.vstr[0][0] << endl << tbl.vstr[1][0] 
     << tbl.vstr[1][1] << endl << tbl.vstr[2][0] <<
     tbl.vstr[2][1] << tbl.vstr[2][2] << endl<<
     tbl.vstr[3][0]<< " " << tbl.vstr[3][1]<< " " << tbl.vstr[3][2]<< " " <<
     tbl.vstr[3][3] << endl;
+    */
+
+   tbl.crtpstr();
 
     cout << tbl.vstr.size() << tbl.vstr_size() << endl;
 
+    cout << tbl.pstr[0] << tbl.pstr[1] << tbl.pstr[2] << endl;
+
     double p;
 
-    tbl.par(0,0);
+    //tbl.par(0,0);
 
     //cin >> p;
  
     const int n = 250; //szerkość kanwy
     const int m = 1000; //wysokość
-    const int k = 500; // ilość iteracji
+
     const int l = 200; //ilość bitów
     const int canvas_width  = n;//ustalenie szerokości mapy
     const int canvas_height = m;//ustalenie wysokości
-/*
-    vector <string> vc;
 
-    li.tkvec(li.jac_str(3));
 
-    tbl.vstr.push_back(vc);
+    //vector <string> vc;
+
+    //li.tkvec(li.jac_str(3));
+
+    //tbl.vstr.push_back(vc);
     
-    li.prtstr();
+    //li.prtstr();
 
     //cout << tbl.vstr[0][0]<<endl<<tbl.vstr[0][1]<<endl<<tbl.vstr[0][2]<<endl;
 
     cartesian_canvas canvas(canvas_width,canvas_height);
 
+    
  
     point_t pnt = {-canvas_width/2,canvas_height/2};
      
         for(int i = 0; i <= k;i++){
-            for(int j = 0; j< l; j++ ){
+            cout <<"e" <<endl;
+            for(int j = 0; j<=i; j++ ){
+
+
                 
-                if(1==li.test(i,l-1-j)){
+                if(1==tbl.test(i,j)){
                     canvas.plot_pixel(pnt.x + j,pnt.y - i);
                 }
 
@@ -773,7 +808,7 @@ int main()
         }
     cout<< "fibtab przeszedł" << endl;
     canvas.image().save_image("plot2.bmp");
-     */
-    cout << "zamykam sie" << endl;
+     
+    cout << tbl.test(1,1) << "zamykam sie" << endl;
     return 0;
 }
