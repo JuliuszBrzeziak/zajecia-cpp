@@ -80,12 +80,17 @@ int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystą
     HWND  hwnd;
 
     //to będzie nasze okno
-    hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, 
-    NazwaKlasy, 
-    _T("Oto okienko"),
-    WS_OVERLAPPEDWINDOW, 
-    CW_USEDEFAULT, 
-    CW_USEDEFAULT, 550 ,550, NULL, NULL, hInstance, NULL );
+    hwnd = CreateWindowEx(
+        WS_EX_CLIENTEDGE, 
+        NazwaKlasy, 
+        _T("Oto okienko"),
+        WS_OVERLAPPEDWINDOW, 
+        CW_USEDEFAULT, 
+        CW_USEDEFAULT, 
+        550 ,550, 
+        NULL, NULL, 
+        hInstance, 
+        NULL );
 
     //obsulga bledu
     if(hwnd == NULL)

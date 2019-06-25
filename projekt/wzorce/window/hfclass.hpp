@@ -519,10 +519,11 @@ class Liczba{
 
 class Tablica : public Liczba {
 
-    public:
+    
     vector<vector<string> >vstr;//tutaj będą stringi z wartościami trójąta
     vector<string> pstr;//tutaj będą parzystości danych wartości trójkąta
 
+    public:
     //tworzy trójkąt paskala w vstr
     //z jakiegoś powodu nie chce przyjąć nazwy pascal
     void pascaal( int f ) {
