@@ -1,6 +1,6 @@
 
 
-//             TO JEST MOJA KLASA 
+//             TO JEST MóJ PLIK Z KLASAMI 
 
 
 #include <iostream>
@@ -438,27 +438,34 @@ class Liczba{
     }    
 
     //dodaje do siebie 2 stringi bitowe
-    //autorem jest aganjali10
     string addBinary(string a, string b) { 
-        string result = ""; // Initialize result 
-        int s = 0;          // Initialize digit sum 
+
+        string wyn = ""; 
+        int s = 0;          
         int i = a.size() - 1, j = b.size() - 1; 
+
         while (i >= 0 || j >= 0 || s == 1) 
         { 
-        // Comput sum of last digits and carry 
-        s += ((i >= 0)? a[i] - '0': 0); 
-        s += ((j >= 0)? b[j] - '0': 0); 
+        
+        if(i>=0){
+            s += a[i] - '0';//dodaje do s 1
+        } else 
+            {s+=0;}
+
+
+        if(j>=0){
+            s += b[j] - '0';//dodaje do s 1
+        }else
+            {s+=0;}
+
+   
+        wyn = char(s % 2 + '0') + wyn; 
   
-        // If current digit sum is 1 or 3, add 1 to result 
-        result = char(s % 2 + '0') + result; 
-  
-        // Compute carry 
         s /= 2; 
   
-        // Move to next digits 
         i--; j--; 
         } 
-        return result; 
+        return wyn; 
     }
 
     //mnożenie binarnej przez binarną
