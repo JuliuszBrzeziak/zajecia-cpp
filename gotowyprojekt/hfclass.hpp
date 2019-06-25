@@ -899,7 +899,7 @@ class Tablica : public Liczba {
 
                 //wpisuje wynik do wektora buforowego
                 i2 = addBinary(vstr[i-1][j-1],vec[j-1]);
-                vec.push_back(i2);cout << i2 <<endl;
+                vec.push_back(i2);
 
             }
 
