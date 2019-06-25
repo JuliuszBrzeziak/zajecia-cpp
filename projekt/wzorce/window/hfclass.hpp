@@ -20,15 +20,16 @@ using namespace std;
 //nadrzędna klasa
 class Liczba{
 
+    private:
 
-
+    vector<string> str;
 
     
     public:
     
 
 
-    vector<string> str;
+    
 
     //zwraca wektor stringów ciągu silni
     vector <string> sil_str(int n){
@@ -63,8 +64,12 @@ class Liczba{
 
         }
 
-            //zwraca wektor
-            return vec;
+        //wpisuje vec do stringa w klasie
+        str = vec;
+
+  
+        //zwraca wektor
+        return vec;
     }
 
 
@@ -97,6 +102,10 @@ class Liczba{
             vec.push_back( ss );
         } 
 
+        //wpisuje vec do stringa w klasie
+        str = vec;
+
+  
         //zwraca wektor
         return vec;
     }
@@ -131,6 +140,10 @@ class Liczba{
             vec.push_back( ss );
         } 
 
+        //wpisuje vec do stringa w klasie
+        str = vec;
+
+  
         //zwraca wektor
         return vec;
     }
@@ -166,6 +179,10 @@ class Liczba{
             vec.push_back( ss );
         } 
 
+        //wpisuje vec do stringa w klasie
+        str = vec;
+
+  
         //zwraca wektor
         return vec;
     }
@@ -202,6 +219,10 @@ class Liczba{
             vec.push_back( ss );
         } 
 
+        //wpisuje vec do stringa w klasie
+        str = vec;
+
+  
         //zwraca wektor
         return vec;
     }
@@ -238,6 +259,10 @@ class Liczba{
             vec.push_back( ss );
         } 
 
+        //wpisuje vec do stringa w klasie
+        str = vec;
+
+  
         //zwraca wektor
         return vec;
     }
@@ -273,6 +298,10 @@ class Liczba{
             vec.push_back( ss );
         } 
 
+        //wpisuje vec do stringa w klasie
+        str = vec;
+
+  
         //zwraca wektor
         return vec;
     }
@@ -312,6 +341,10 @@ class Liczba{
             vec.push_back( ss );
         }
 
+        //wpisuje vec do stringa w klasie
+        str = vec;
+
+  
         //zwraca wektor
         return vec;
     }
@@ -348,6 +381,10 @@ class Liczba{
             vec.push_back( ss );
         }
 
+        //wpisuje vec do stringa w klasie
+        str = vec;
+
+  
         //zwraca wektor
         return vec; 
     }
@@ -380,6 +417,9 @@ class Liczba{
             //wpycha bufor w wektor
             vec.push_back( ss );
         }
+
+        //wpisuje vec do stringa w klasie
+        str = vec;
 
         //zwraca wektor
         return vec;    

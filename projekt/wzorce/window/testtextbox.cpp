@@ -336,7 +336,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -nt/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.nat_str(k));
+            tbl.nat_str(k);
 
      
             //tworzy kanwę
@@ -356,7 +356,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
@@ -387,7 +387,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -nt/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.fib_str(k));
+            tbl.fib_str(k);
             
             
             //tworzy kanwę
@@ -407,7 +407,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
@@ -438,8 +438,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -nt/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.jac_str(k));
-            
+            tbl.jac_str(k);
             
             //tworzy kanwę
             cartesian_canvas canvas(canvas_width,canvas_height);
@@ -458,7 +457,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
@@ -490,7 +489,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -nt/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.leo_str(k));
+            tbl.leo_str(k);
             
             
             //tworzy kanwę
@@ -510,7 +509,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
@@ -543,7 +542,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -nt/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.jacluc_str(k));
+            tbl.jacluc_str(k);
             
             
             //tworzy kanwę
@@ -563,7 +562,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
@@ -595,7 +594,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -nt/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.luc_str(k));
+            tbl.luc_str(k);
             
             
             //tworzy kanwę
@@ -615,7 +614,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
@@ -647,7 +646,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -nt/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.pad_str(k));
+            tbl.pad_str(k);
             
             
             //tworzy kanwę
@@ -667,7 +666,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
@@ -699,7 +698,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -nt/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.per_str(k));
+            tbl.per_str(k);
             
             
             //tworzy kanwę
@@ -719,7 +718,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
@@ -751,7 +750,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -nt/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.pell_vstr(k));
+            tbl.pell_vstr(k);
             
             
             //tworzy kanwę
@@ -771,7 +770,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
@@ -803,7 +802,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             const double width = -512/2; //współrzędna szerokości początkowego punktu
             const double height = nt/2; //współrzędna wyskokości początkowego punktu
             //wywołuje odpowiednia metode
-            tbl.tkvec( tbl.sil_str(k));
+            tbl.sil_str(k);
             
             
             //tworzy kanwę
@@ -823,7 +822,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
                     //std::cout << "elo" << tbl.str[0][510] <<std::endl;
                     
                     //testuje czy w stringu jest 1, jeśli tak to rysuje bit
-                    if('1'==tbl.str[i][511-j]){
+                    if(1==tbl.test(i,511-j)){
                         
                         canvas.plot_pixel(pnt.x + j,pnt.y - i);
                         //std::cout << "elo" << std::endl;
