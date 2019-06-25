@@ -13,48 +13,392 @@
 #include "bitmap_image.hpp"
 
 
+
 using namespace std;
 
 
 //nadrzędna klasa
 class Liczba{
 
-    
-    //klasa zawiera prywatną liczbę oraz tabele int
-    private:
-    //#############################################################
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //Ukradziono tab
-    //Ukradziono i
-    ////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //#############################################################
-    
-    private:
-    
-    
 
 
-    //i publiczne metody
+
+    
     public:
+    
+
 
     vector<string> str;
 
-    
+    //zwraca wektor stringów ciągu silni
+    vector <string> sil_str(int n){
 
-    //#############################################################
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //chwilowo umieszczono tutaj tab i l też
-    vector<unsigned long long  int> tab;
-    int l;
+        //tworzy wektor który zwróci
+        vector <string> vec;
 
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //#############################################################
+        //ustala wartości początkowe
+        int a = 1;
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512>(a).to_string();
+        string s2 = bitset< 512 >(a).to_string(); 
+
+        //tworzy string buforowy
+        string ss= bitset< 512 >(a).to_string();;
+
+        //wpycha wartość początkową w wektor w wektor 
+        vec.push_back(s1);
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 1; i<n; i++){
+
+            //zwiększa indeks
+            s2 =  addBinary(s2,s1);
+
+            //wpisuje w wektor buforowy
+            ss = bbmultiply(ss,s2);
+
+            //wpycha bufor w wektor
+            vec.push_back( ss );
+
+        }
+
+            //zwraca wektor
+            return vec;
+    }
 
 
+    //zwraca wektor stringów ciągu fibonacciego
+    vector <string> fib_str(int n){
+
+        //tworzy wektor który zwróci
+        vector <string> vec;
+
+        //ustala wartości początkowe
+        int a = 1;
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512 >(a).to_string();
+          
+        //wpycha je w wektor
+        vec.push_back(s1);
+        vec.push_back(s1);
+        
+        //tworzy string buforowy
+        string ss;
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 2; i<n; i++){
+
+            //wpisuje w bufor wynik przepisu
+            ss =  addBinary(vec[i-1], vec[i - 2]);
+
+            //wpycha bufor w wektor
+            vec.push_back( ss );
+        } 
+
+        //zwraca wektor
+        return vec;
+    }
+
+   
+    //zwraca wektor stringów ciągu jacobsthala
+    vector <string> jac_str(int n){
+
+        //tworzy wektor który zwróci
+        vector <string> vec;
+
+        //ustala wartości początkowe
+        int a = 1;
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512 >(a).to_string();
+          
+        //wpycha je w wektor
+        vec.push_back(s1);
+        vec.push_back(s1);
+        
+        //tworzy string buforowy
+        string ss; 
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 2; i<n; i++){
+
+            //wpisuje w bufor wynik przepisu
+            ss =  addBinary(vec[i-1], bdmultiply(vec[i - 2],2));
+
+            //wpycha bufor w wektor
+            vec.push_back( ss );
+        } 
+
+        //zwraca wektor
+        return vec;
+    }
 
 
-    //dodaje do siebie dwie binarne i wypluwa stringa binarnego
-    //OK
+    //zwraca wektor stringów ciągu Leonardo
+    vector <string> leo_str(int n){
+
+        //tworzy wektor który zwróci
+        vector <string> vec;
+
+        //ustala wartości początkowe
+        int a = 1;
+
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512 >(a).to_string();
+  
+        //wpycha je w wektor
+        vec.push_back(s1);
+        vec.push_back(s1);
+        
+        //tworzy string buforowy
+        string ss;
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 2; i<n; i++){
+
+            //wpisuje w bufor wynik przepisu
+            ss =  addBinary(vec[i-1], addBinary(vec[i - 2],s1));
+
+            //wpycha bufor w wektor
+            vec.push_back( ss );
+        } 
+
+        //zwraca wektor
+        return vec;
+    }
+
+
+    //zwraca wektor stringów ciągu jacobsthal-lucas
+    vector <string> jacluc_str(int n){
+
+        //tworzy wektor który zwróci
+        vector <string> vec;
+
+        //ustala wartości początkowe
+        int a = 1;
+        int b = 2;
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512 >(b).to_string();
+        string s2 = bitset< 512 >(a).to_string();
+          
+        //wpycha je w wektor
+        vec.push_back(s1);
+        vec.push_back(s2);
+                 
+        //tworzy string buforowy
+        string ss;
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 2; i<n; i++){
+
+            //wpisuje w bufor wynik przepisu
+            ss =  addBinary(vec[i-1], bdmultiply(vec[i - 2],2));
+
+            //wpycha bufor w wektor
+            vec.push_back( ss );
+        } 
+
+        //zwraca wektor
+        return vec;
+    }
+
+
+    //zwraca wektor stringów ciągu Lucasa
+    vector <string> luc_str(int n){
+
+        //tworzy wektor który zwróci
+        vector <string> vec;
+
+        //ustala wartości początkowe
+        int a = 1;
+        int b = 2;
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512 >(b).to_string();
+        string s2 = bitset< 512 >(a).to_string();
+        
+        //wpycha je w wektor
+        vec.push_back(s1);
+        vec.push_back(s2);
+            
+        //tworzy string buforowy
+        string ss;
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 2; i<n; i++){
+
+            //wpisuje w bufor wynik przepisu
+            ss =  addBinary(vec[i-1], vec[i - 2]);
+
+            //wpycha bufor w wektor
+            vec.push_back( ss );
+        } 
+
+        //zwraca wektor
+        return vec;
+    }
+
+
+    //zwraca wektor stringów ciągu Padovana
+    vector <string> pad_str(int n){
+
+        //tworzy wektor który zwróci
+        vector <string> vec;
+
+        //ustala wartości początkowe
+        int a = 1;
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512 >(a).to_string();
+          
+        //wpycha je w wektor
+        vec.push_back(s1);
+        vec.push_back(s1);
+        vec.push_back(s1);
+        
+        //tworzy string buforowy
+        string ss;
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 3; i<n; i++){
+
+            //wpisuje w bufor wynik przepisu
+            ss =  addBinary(vec[i-2], vec[i - 3]);
+
+            //wpycha bufor w wektor
+            vec.push_back( ss );
+        } 
+
+        //zwraca wektor
+        return vec;
+    }
+
+
+    //zwraca wektor stringów ciągu Perrina
+    vector <string> per_str(int n){
+
+        //tworzy wektor który zwróci
+        vector <string> vec;
+
+        //ustala wartości początkowe
+        int a = 3;
+        int b = 0;
+        int c = 2;
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512 >(a).to_string();
+        string s2 = bitset< 512 >(b).to_string();
+        string s3 = bitset< 512 >(c).to_string();
+          
+        //wpycha je w wektor
+        vec.push_back(s1);
+        vec.push_back(s2);
+        vec.push_back(s3);
+
+        //tworzy string buforowy
+        string ss;
+        
+        //pętla kręci się dla ustalonego n
+        for(int i = 3; i<n; i++){
+
+            //wpisuje w bufor wynik przepisu
+            ss =  addBinary(vec[i-2], vec[i - 3]);
+
+            //wpycha bufor w wekto
+            vec.push_back( ss );
+        }
+
+        //zwraca wektor
+        return vec;
+    }
+
+
+    //zwraca wektor stringów ciągu Pella
+    vector <string> pell_vstr(int n){
+
+        //tworzy wektor który zwróci
+        vector <string> vec;
+        
+        //ustala wartości początkowe
+        int a = 0;
+        int b = 1;
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512 >(a).to_string();
+        string s2 = bitset< 512 >(b).to_string();
+
+        //wpycha je w wektor
+        vec.push_back(s1);
+        vec.push_back(s2);
+        
+        //tworzy string buforowy
+        string ss;
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 2; i<=n; i++){
+
+            //wpisuje w bufor wynik przepisu
+            ss =  addBinary(vec[i-2], bdmultiply(vec[i - 1],2));
+
+            //wpycha bufor w wektor
+            vec.push_back( ss );
+        }
+
+        //zwraca wektor
+        return vec; 
+    }
+
+
+    //zwraca wektor stringów ciągu liczb naturalnych
+    vector <string> nat_str(int n){
+
+        //tworzy wektor który zwróci
+        vector <string> vec;
+
+        //ustala wartości początkowe
+        int a = 1;
+
+        //tworzy stringi wartosci początkowych
+        string s1 = bitset< 512 >(a).to_string();
+          
+        //wpycha je w wektor
+        vec.push_back(s1);
+        
+        //tworzy string buforowy
+        string ss;
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 1; i<n; i++){
+
+            //wpisuje w bufor wynik dodawania
+            ss =  addBinary(vec[i-1], s1);
+
+            //wpycha bufor w wektor
+            vec.push_back( ss );
+        }
+
+        //zwraca wektor
+        return vec;    
+    }
+
+
+    //wpisuje zany wektor stringów w wektor stringów w klasie
+    void tkvec(vector <string> vec){
+        str = vec;
+    }
+
+
+    //zwraca długość str
+    int str_Size(){
+        return str.size();
+    }    
+
+    //dodaje do siebie 2 stringi bitowe
+    //autorem jest aganjali10
     string addBinary(string a, string b) { 
         string result = ""; // Initialize result 
         int s = 0;          // Initialize digit sum 
@@ -75,515 +419,54 @@ class Liczba{
         i--; j--; 
         } 
         return result; 
-    } 
-
-
-    //bierze inta i wpisuje go w l Liczby
-    //OK
-    void Wczytaj_l(int a){
-        l = a;
     }
-
-    //wypisuje i`ty element tablicy
-    //OK
-    void Wypisz_tabi(int i){
-        cout << "element " <<i<<" to "<< tab[i] <<  endl;
-    }
-    
-    //zwraca ilość elementów taba
-    //OK
-    int tab_Size(){
-        return tab.size();
-    }
-
-    //zwraca długość str
-    //OK
-    int str_Size(){
-        return str.size();
-    }    
-
-    //wypisuje tab
-    //OK
-    void Wypisz_tab(){
-        for(int k=0;k<tab_Size();k++){
-            cout << tab[k] << ",";
-        }
-    }
-
-    //sprawdza czy tab jest pusty, jeśli tak to wpisuje do niego fib
-    //OK
-    void fib_tab(int n){
-        if(0 != tab_Size()){
-            cout << "fib_tab error: niezerowa wielkośc tablicy" << endl;
-            exit(1);
-        } else{
-            string ss;
-            tab = {1,1,1};
-            its();
-            for(int i = 3; i<=n; i++){
-                //ss =  addBitStrings(str[i-1], str[i - 2]);
-                //tab.push_back(tab[i-1] + tab[i - 2]);
-                //str.push_back( ss );
-            }
-        }
-    }
-
-
-
-    //sprawdza czy tab jest pusty i wpisuje do niego silnie
-    //OK
-    void sil_tab(int n){
-        
-        int k;
-        
-        if(0 != tab_Size()){
-            cout << "sil_tab error: niezerowa wielkośc tablicy" << endl;
-            exit(2);
-        } else{
-            tab={1};
-            for(int i =1;i<n;i++){
-              
-                tab.push_back( *(tab.end()-1) * i);
-            }
-        }
-    }
-
-    //naturalna tablica
-    //OK
-    void nat_tab(int n){
-        if(0 != tab_Size()){
-            cout << "nat_tab error: niezerowa wielkośc tablicy" << endl;
-            exit(3);
-        } else {
-            tab={0};
-            for (int i = 1; i<n;i++){
-                tab.push_back(i);
-            }
-        }
-    }
-
-    //naturalny bin string
-    //OK
-    vector <string> nat_str(int n){
-
-        vector <string> vec;
-        cout << "elo1" <<endl;
-        string ss;
-        int a = 1;
-
-        string s1 = bitset< 200 >(a).to_string();
-          
-        vec.push_back(s1);
-            
-        // str[4]= s2;
-        cout << "elo2" << endl;
-        //its();
-        for(int i = 1; i<n; i++){
-            ss =  addBinary(vec[i-1], s1);
-            //reverse(ss.begin(),ss.end());
-            //cout << ss <<endl <<endl;
-            //reverse(ss.begin(),ss.end());
-            //tab.push_back(tab[i-1] + tab[i - 2]);
-            vec.push_back( ss );
-        }
-
-        return vec;
-        
-    }
-
-    //spr czy tab i str jest pusty i wkleja odwrócony bit
-    //OK
-    void itrs(){
-
-        if(0 == tab_Size()){
-            cout << "itrs error: zerowa wielkośc tablicy liczb" << endl;
-            exit(3); 
-        }
-
-        if(0 != str_Size()){
-            cout << "itrs error: niezerowa wielkośc tablicy" << endl;
-            exit(4);
-        } else{
-            string s;
-            for(int i = 0; i <= tab_Size(); i++){
-                s = bitset< 128 >(tab[i]).to_string();
-                reverse(s.begin(),s.end());
-                str.push_back(s);
-            }
-            
-        }
-    }
-
-    //zamienia int tab w str bin
-    //OK
-    void its(){
-
-        if(0 == tab_Size()){
-            cout << "itrs error: zerowa wielkośc tablicy liczb" << endl;
-            exit(3); 
-        }
-
-        if(0 != str_Size()){
-            cout << "itrs error: niezerowa wielkośc tablicy" << endl;
-            exit(4);
-        } else{
-            string s;
-            for(int i = 0; i <= tab_Size(); i++){
-                s = bitset< 128 >(tab[i]).to_string();
-                //reverse(s.begin(),s.end());
-                str.push_back(s);
-            }
-            
-        }
-    }
-
-
-    //printuje mojego stringa bitów
-    //OK
-    void prtstr(){
-        for(int i =0; i<str_Size();i++){
-            cout << str[i] << endl;
-        }
-    }
-
-    //printuje długość stringa
-    //OK
-    void nl(){
-        cout << str[0].length() << endl;
-        cout << str[0][2] << endl;
-    }
-
-
-    //Funkcja testowa
-    void test(int i,int talbica[],vector<int> vec){
-
-        int tablica2[5]={0,1,2,3,4};
-        int i2=884;
-        vector<unsigned long long int> vec2(5,3);
-
-        //vec2[0]=88;
-        //vec2[1]=881;
-        vec2[2]=882;
-        //vec2[3]=883;
-        
-
-        //sprawdza fib_tab
-        cout <<"fib_tab ";
-        sil_tab(4);
-        Wypisz_tab();
-        cout<<"  jesli jest \"0,1,1,2,3,5\" to dobrze"<<endl;
-
-
-        //sprawdza działanie wczytaj_tab wewnętrznego wektora
-        //Wczytaj_tab(vec2);
-        cout <<"wczytaj_tab wewnątrz:" <<tab[2] << "  jeżeli 882 to dobrze"<< endl;
-        cout << "tab_size " << tab_Size() << " powinno być 5" << endl;
-
-        //sprawdza wczytaj_tab wektorów zewnętrznych
-        //Wczytaj_tab(vec);
-        cout <<"wczytaj_tab zewnątrz:" <<tab[2] << "  jeżeli 883 to dobrze"<< endl;
-
-        //sprawdza działanie wewnętrznego wczytaj_l
-        Wczytaj_l(i2);
-        cout <<"wczytaj_l wewnątrz:" <<i2 << "  jeżeli 884 to dobrze"<< endl;
-
-        //sprawdza działanie zewnętrznego wczytaj_l
-        Wczytaj_l(i);
-        cout <<"wczytaj_tab wewnątrz:" <<l << "  jeżeli 885 to dobrze"<< endl;
-
-        //sprawdza wypisz_tabi
-        Wypisz_tabi(2);
-
-        //sprawdza tab_size
-        cout << "tab_size " << tab_Size() << " powinno być 4" << endl;
-
-        //sprawdza wypisz_tab
-        cout << "wypisz tab";
-        Wypisz_tab();
-        cout << "powinno być \"883,883,883,\" "<<endl;
-
-        //sprawdza prtspr
-        cout << "prtspr" <<endl;
-        itrs();
-        prtstr();
-
-        nl();
-
-        //nat_tab(20);
-
-        //rysuj();
-        cout << "koniec testu"<<endl;
-    }
-
-    void tkvec(vector <string> vec){
-        str = vec;
-    }
-
 
     //mnożenie binarnej przez binarną
-    //OK
     string bbmultiply(string num1, string num2) {
-        // Start typing your C/C++ solution below
-        // DO NOT write int main() function
+
+        //tworzy bitowy iterator
         int a = 1;
-        //int b = 0;
-        string j = bitset< 200 >(a).to_string();
+        
+        //zamienia ja w string bitów
+        string j = bitset< 512 >(a).to_string();
+
+        //granica iterowania już jest stringiem bitów jest też pierwszą sumą
         string ss = num1;
-        for(string i = bitset< 200 >(a).to_string();i!=num2;i = addBinary(i,j)){
+
+        //pętla kręci się tak długo aż osiągnie num2 raz
+        //za każdym razem dodaje bitowo 1 do iteratora
+        for(string i = bitset< 512 >(a).to_string();i!=num2;i = addBinary(i,j)){
+
+            //wpisuje dodawanie w bufor
             ss = addBinary(ss,num1);
-            //cout << i<<endl<<j<<endl<<endl;
+
         }
 
+        //zwraca stringa
         return ss;
     }
 
     //mnożenie binarnej przez dec
-    //OK
     string bdmultiply(string num1,int n){
+
+        //tworzy buforowy string
         string ss;
+
+        //pętla kręci się dla ustalonego n
         for(int i=0;i<n;i++){
+
+            //dodaje mnożoną n razy
             ss = addBinary(ss,num1);
         }
+
+        //zwraca stringa
         return ss;
     }
 
-    //ustawia str w silnie
-    //OK
-    vector <string> sil_str(int n){
-
-        vector <string> vec;
-
-        cout << "elo1" <<endl;
-
-            int a = 1;
-            int b = str_Size();
-            string ss= bitset< 200 >(a).to_string();;
-            string s1 = bitset< 200>(a).to_string();
-            string s2 = bitset< 200 >(a).to_string();          
-            vec.push_back(s1);
-
-            //its();
-            for(int i = 1; i<n; i++){
-                s2 =  addBinary(s2,s1);
-                ss = bbmultiply(ss,s2);
-
-                vec.push_back( ss );
-            }
-
-            return vec;
-        
-    }
-
-    //fibonacci bin string
-    //OK
-    vector <string> fib_str(int n){
-
-        vector <string> vec;
-
-        string ss;
-        int a = 1;
-
-        string s1 = bitset< 200 >(a).to_string();
-          
-        vec.push_back(s1);
-        vec.push_back(s1);
-        
-            
-        for(int i = 2; i<n; i++){
-            ss =  addBinary(vec[i-1], vec[i - 2]);
-
-            vec.push_back( ss );
-        } 
-
-        return vec;
-    }
-
-    //jacobsthal
-    //OK
-    vector <string> jac_str(int n){
-
-        vector <string> vec;
-        cout << "elo1" <<endl;
-        string ss;
-        int a = 1;
-
-        string s1 = bitset< 200 >(a).to_string();
-          
-        vec.push_back(s1);
-        vec.push_back(s1);
-        
-        cout << "elo2" << endl;
-            
-        for(int i = 2; i<n; i++){
-            ss =  addBinary(vec[i-1], bdmultiply(vec[i - 2],2));
-
-            vec.push_back( ss );
-        } 
-
-        return vec;
-    }
-
-    //leonardo
-    //OK
-    vector <string> leo_str(int n){
-
-        vector <string> vec;
-
-        string ss;
-        int a = 1;
-
-        string s1 = bitset< 200 >(a).to_string();
-          
-        vec.push_back(s1);
-        vec.push_back(s1);
-        
-            
-        for(int i = 2; i<n; i++){
-            ss =  addBinary(vec[i-1], addBinary(vec[i - 2],s1));
-
-            vec.push_back( ss );
-        } 
-
-        return vec;
-    }
-
-    //jacobsthal-lucas
-    //OK
-    vector <string> jacluc_str(int n){
-
-        vector <string> vec;
-
-        cout << "elo1" <<endl;
-        string ss;
-        int a = 1;
-        int b = 2;
-
-        string s1 = bitset< 200 >(b).to_string();
-        string s2 = bitset< 200 >(a).to_string();
-          
-        vec.push_back(s1);
-        vec.push_back(s2);
-        
-        cout << "elo2" << endl;
-            
-        for(int i = 2; i<n; i++){
-            ss =  addBinary(vec[i-1], bdmultiply(vec[i - 2],2));
-
-            vec.push_back( ss );
-        } 
-
-        return vec;
-    }
-
-    //lucas
-    //OK
-    vector <string> luc_str(int n){
-
-        vector <string> vec;
-
-        string ss;
-        int a = 1;
-        int b = 2;
-
-        string s1 = bitset< 200 >(b).to_string();
-        string s2 = bitset< 200 >(a).to_string();
-          
-        vec.push_back(s1);
-        vec.push_back(s2);
-            
-        for(int i = 2; i<n; i++){
-            ss =  addBinary(vec[i-1], vec[i - 2]);
-
-            vec.push_back( ss );
-        } 
-
-        return vec;
-    }
-
-    //padovan
-    //OK
-    vector <string> pad_str(int n){
-
-        vector <string> vec;
-
-        string ss;
-        int a = 1;
-
-        string s1 = bitset< 200 >(a).to_string();
-          
-        vec.push_back(s1);
-        vec.push_back(s1);
-        vec.push_back(s1);
-        
-            
-        for(int i = 3; i<n; i++){
-            ss =  addBinary(vec[i-2], vec[i - 3]);
-
-            vec.push_back( ss );
-        } 
-
-        return vec;
-    }
-
-    //perrin
-    //OK
-    vector <string> per_str(int n){
-
-        vector <string> vec;
-
-        string ss;
-        int a = 3;
-        int b = 0;
-        int c = 2;
 
 
-        string s1 = bitset< 200 >(a).to_string();
-        string s2 = bitset< 200 >(b).to_string();
-        string s3 = bitset< 200 >(c).to_string();
-          
-        vec.push_back(s1);
-        vec.push_back(s2);
-        vec.push_back(s3);
-        
-            
-        for(int i = 3; i<n; i++){
-            ss =  addBinary(vec[i-2], vec[i - 3]);
 
-            vec.push_back( ss );
-        }
-
-        return vec;
-    }
-
-    //pell
-    //OK
-    vector <string> pell_vstr(int n){
-        vector <string> vec;
-        cout << "elo1" <<endl;
-        string ss;
-        int a = 0;
-        int b = 1;
-
-        string s1 = bitset< 200 >(a).to_string();
-        string s2 = bitset< 200 >(b).to_string();
-
-        vec.push_back(s1);
-        vec.push_back(s2);
-        
-        cout << "elo2" << endl;
-            
-        for(int i = 2; i<=n; i++){
-            ss =  addBinary(vec[i-2], bdmultiply(vec[i - 1],2));
-
-            vec.push_back( ss );
-        }
-
-        cout << "vec" << endl;
-
-        return vec; 
-    }
-
-
+    //testuje czy w danym bicie jest jedynka
     int test(int i,int j){
         if('1'==str[i][j]){
             return 1;
@@ -597,94 +480,124 @@ class Liczba{
 class Tablica : public Liczba {
 
     public:
-    vector<vector<string> >vstr;
-    vector<string> pstr;
+    vector<vector<string> >vstr;//tutaj będą stringi z wartościami trójąta
+    vector<string> pstr;//tutaj będą parzystości danych wartości trójkąta
 
-    //trójkąt paskala w vstr
-    //OK
-    /* 
-    void pascal(int n){
+    //tworzy trójkąt paskala w vstr
+    //z jakiegoś powodu nie chce przyjąć nazwy pascal
+    void pascaal( int f ) {
 
-        //vector <int> vec,vec1;
-
+        //wartości początkowe
         int a = 1;
 
+        //zamienia je w stringi
         string i1 = bitset< 512 >(a).to_string();
         
-
+        //tworzy wektor w którym będzie string jednostkowy
         vector <string> vecp;
+
+        //wpisuje jedynkę stringową do wektora jednostkowego
         vecp.push_back(i1);
 
+        //wpisuje wektor jednostkowy do wektora stringów
         vstr.push_back(vecp);
 
+        //dopisuje do wektora jednostkowego jeszcze jedną jedynkę
         vecp.push_back(i1);
 
+        //pcha go do wektora stringów
         vstr.push_back(vecp);
 
+
+        //tworzy wektor buforowy
+        vector <string> vec;
         
-        for(int i = 2; i <=n; i++){
+        //pętla kręci się dla ustalonego f
+        for(int i = 2; i <=f; i++){
 
-            //cout <<"elo";
-
-            vector <string> vec;
+            //wpisuje 1 w pierwsze miejsce
             vec.push_back(i1);
 
+            //trójkąty maja szerokość proporcjonalną do wysokości
+            //więc od niej uzależniamy szerokość
             for(int j = 1; j <i; j++){
 
+                //wpisuje wynik do wektora buforowego
                 vec.push_back(addBinary(vstr[i-1][j-1],vstr[i-1][j]));
 
             }
 
+            //wpisuje końcową jedynkę do wektora buforowego
             vec.push_back(i1);
 
+            //wpisuje wektor buforowy do wektora stringów
             vstr.push_back(vec);
 
+            //wymazuje wektor buforowy
             vec.clear();
 	        vec.shrink_to_fit();
 
         }
 
-
     }
-*/
+
+    //tworzy trójkąt pascala(2,1)
     void pascal21(int n){
 
+        //wartości początkowe
         int a = 1;
         int b = 2;
 
+        //zamienia je w stringi
         string i1 = bitset< 512 >(a).to_string();
         string i2 = bitset< 512 >(b).to_string();
 
+        //tworzy wektor w którym będzie string jednostkowy
         vector <string> vecp;
+
+        //wpisuje jedynkę stringową do wektora jednostkowego
         vecp.push_back(i1);
 
+        //wpisuje wektor jednostkowy do wektora stringów
         vstr.push_back(vecp);
 
+        //czyści wektor jednostkowy
         vecp.clear();
 	    vecp.shrink_to_fit();
 
+        //recykling wektora jednostkowego
+        //wpisuje drugi wiersz trójkąta
         vecp.push_back(i2);
         vecp.push_back(i1);
 
+        //pcha go do wektora stringów
         vstr.push_back(vecp);
 
+        //tworzy wektor buforowy
+        vector <string> vec;
+
+        //pętla kręci się dla ustalonego n
         for(int i = 2; i <=n; i++){
 
-            cout <<"elo";
-
-            vector <string> vec;
+            //wpisuje 2 w pierwsze miejsce
             vec.push_back(i2);
 
+            //trójkąty maja szerokość proporcjonalną do wysokości
+            //więc od niej uzależniamy szerokość
             for(int j = 1; j <i; j++){
 
+                //wpisuje wynik do wektora buforowego
                 vec.push_back(addBinary(vstr[i-1][j-1],vstr[i-1][j]));
-
             }
 
+            //wpisuje końcową jedynkę do wektora buforowego
             vec.push_back(i1);
 
+            //wpisuje wektor buforowy do wektora stringów
             vstr.push_back(vec);
 
+
+            //wymazuje wektor buforowy
             vec.clear();
 	        vec.shrink_to_fit();
 
@@ -692,33 +605,48 @@ class Tablica : public Liczba {
 
     }
 
+    //sprawdza długość wektora stringów
     int vstr_size(){
+        
+        //wpisuje jego długość do i
         int i = vstr.size();
+
+        //zmniejsza ja o 1 aby zwrócić indeks ostatniego wyrazu
         i--;
         return i;
     }
 
+    //sprawdza czy dany string jest parzysty
     char par(int i, int j){
-        //cout << vstr[i][j].at(199) << endl;
+
+        //sprawdza ostatni bit odpowiedzialny za parzystośc
         return vstr[i][j].at(511);
     }
 
+    //wpisuje parzystości w wektor parzystości
     void crtpstr(){
+        
+        //pętla kręci się dla długości wektora stringów
         for(int i = 0; i <= vstr_size(); i++){
-            string pr;
+
+            string pr;//za każdym razem tworzy się string od nowa
+
+            //trójkąty maja szerokość proporcjonalną do wysokości
+            //więc od niej uzależniamy szerokość
             for(int j = 0; j<=i;j++){
+                
+                //sprawdzamy parzystość i wpisujemy ją w bufor
                 pr += par(i,j);
                 }
-            cout<<pr<<endl;
+            //pchamy bufor w string parzystości
             pstr.push_back(pr);
-            }
-
-        cout << "poszlo";
-        
+            }     
     }
 
     //przeciążona funkcja test z klasy liczba
     int test(int i,int j){
+
+        //jeżeli wektor parzystości jest nieparzysty
         if('1'==pstr[i][j]){
             return 1;
         } else {
