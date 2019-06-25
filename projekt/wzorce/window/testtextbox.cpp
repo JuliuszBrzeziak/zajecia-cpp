@@ -5,10 +5,6 @@
 
 void AddMenus(HWND);
 
-#define IDM_FILE_NEW 1
-#define IDM_FILE_OPEN 2
-#define IDM_FILE_QUIT 3
-
 
 
 //nazwa klasy, dzieki temu kompilator nie płacze
@@ -89,7 +85,7 @@ int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystą
     hwnd = CreateWindowEx(
         WS_EX_CLIENTEDGE, 
         NazwaKlasy, 
-        _T("Oto okienko"),
+        _T("C++ projekt"),
         WS_OVERLAPPEDWINDOW, 
         CW_USEDEFAULT, 
         CW_USEDEFAULT, 
@@ -125,6 +121,7 @@ int WINAPI WinMain(/*uchwyt*/ HINSTANCE hInstance, /*uchwyt poprzeedniego wystą
 //obsluga komunikatów
 LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
+
     switch( msg )
     {
 
@@ -276,10 +273,6 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
         AddMenus(hwnd);
 
 
-        
-
-
-
         break;
     //reakcja na czerwony krzyżyk
     case WM_CLOSE:
@@ -289,6 +282,28 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
     case WM_COMMAND:
         switch (LOWORD(wParam)) //Tutaj wybiera się parametr przekazywany przez guziki
         {
+
+        case 13:{
+            MessageBox(hwnd,
+            "generuje bitmape kolejnych wartosci ciagu w postaci binarnej",
+            "binarne info",MB_OK); // wyświetla go
+            break;
+        }
+
+        case 14:{
+            MessageBox(hwnd,
+            "generuje bitmape w ktorej kazdy piksel odpowiada parzystosci danej liczby, kropka to nieparzyste",
+            "parzystosc info",MB_OK); // wyświetla go
+            break;
+        }
+
+        case 15:{
+            MessageBox(hwnd,
+            "Juliusz Brzeziak\nC++ projekt zaliczeniowy\nCzerwiec 2019",
+            "Autor",MB_OK); // wyświetla go
+            break;
+        }
+
         case 12:{
             int gwstat = 0; //tutaj będzie zapisana długość wpisanego stringa
             gwstat = GetWindowText(textbox,&textsaved[0],20);//wkłada tekst do tablicy 
@@ -931,11 +946,11 @@ void AddMenus(HWND hwnd) {
     hMenubar = CreateMenu();
     hMenu = CreateMenu();
 
-    AppendMenuW(hMenu, MF_STRING, IDM_FILE_NEW, L"&New");
-    AppendMenuW(hMenu, MF_STRING, IDM_FILE_OPEN, L"&Open");
+    AppendMenuW(hMenu, MF_STRING, 13, L"&Binarne...");
+    AppendMenuW(hMenu, MF_STRING, 14, L"&Parzystosc...");
     AppendMenuW(hMenu, MF_SEPARATOR, 0, NULL);
-    AppendMenuW(hMenu, MF_STRING, IDM_FILE_QUIT, L"&Quit");
+    AppendMenuW(hMenu, MF_STRING, 15, L"&Autor");
 
-    AppendMenuW(hMenubar, MF_POPUP, (UINT_PTR) hMenu, L"&File");
+    AppendMenuW(hMenubar, MF_POPUP, (UINT_PTR) hMenu, L"&Info");
     SetMenu(hwnd, hMenubar);
 }

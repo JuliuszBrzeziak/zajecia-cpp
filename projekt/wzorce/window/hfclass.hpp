@@ -1,6 +1,6 @@
 
 
-//             TO JEST MOJA KLASA <3
+//             TO JEST MOJA KLASA 
 
 
 #include <iostream>
