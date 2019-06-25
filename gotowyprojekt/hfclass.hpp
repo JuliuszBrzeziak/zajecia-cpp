@@ -695,5 +695,229 @@ class Tablica : public Liczba {
         }
     }
 
+    //tworzy trójkąt hasoya
+    void has(int n){
+
+        //wartości początkowe
+        int a = 1;
+        int b = 2;
+        int c = 3;
+
+        //zamienia je w stringi
+        string i1 = bitset< 512 >(a).to_string();
+        string i2 = bitset< 512 >(b).to_string();
+        string i3 = bitset< 512 >(c).to_string();
+
+        //tworzy wektor w którym będzie string jednostkowy
+        vector <string> vecp;
+
+        //wpisuje jedynkę stringową do wektora jednostkowego
+        vecp.push_back(i1);
+
+        //wpisuje wektor jednostkowy do wektora stringów
+        vstr.push_back(vecp);
+
+        //czyści wektor jednostkowy
+        vecp.clear();
+	    vecp.shrink_to_fit();
+
+        //recykling wektora jednostkowego
+        //wpisuje drugi wiersz trójkąta
+        vecp.push_back(i1);
+        vecp.push_back(i1);
+
+        //pcha go do wektora stringów
+        vstr.push_back(vecp);
+
+        //czyści wektor jednostkowy
+        vecp.clear();
+	    vecp.shrink_to_fit();
+
+
+        vecp.push_back(i2);
+        vecp.push_back(i1);
+        vecp.push_back(i2);
+
+        //pcha go do wektora stringów
+        vstr.push_back(vecp);
+
+        //czyści wektor jednostkowy
+        vecp.clear();
+	    vecp.shrink_to_fit();
+
+        vecp.push_back(i3);
+        vecp.push_back(i2);
+        vecp.push_back(i2);
+        vecp.push_back(i3);
+
+        //pcha go do wektora stringów
+        vstr.push_back(vecp);
+
+        //czyści wektor jednostkowy
+        vecp.clear();
+	    vecp.shrink_to_fit();
+
+        //tworzy wektor buforowy
+        vector <string> vec;
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 4; i <=n; i++){
+
+            //generuje początkowy wektor
+            i2 = addBinary(vstr[i-1][0],vstr[i-2][0]);
+
+            //wpisuje początkowy w pierwsze miejsce
+            vec.push_back(i2);
+
+            //wpisuje drugi
+            i2 = vstr[i-1][0];
+            
+            vec.push_back(i2);
+
+            //trójkąty maja szerokość proporcjonalną do wysokości
+            //więc od niej uzależniamy szerokość
+            int k = i;
+            k--;
+            for(int j = 2; j <=i; j++){
+
+                //wpisuje wynik do wektora buforowego
+                vec.push_back(addBinary(vstr[i-1][j-1],vstr[i-2][j-2]));
+            }
+
+            //vec.push_back(vstr[i-1][0]);
+
+            //wpisuje końcową początkowy do wektora buforowego
+            //vec.push_back(i2);
+
+            //wpisuje wektor buforowy do wektora stringów
+            vstr.push_back(vec);
+            
+
+            //wymazuje wektor buforowy
+            vec.clear();
+	        vec.shrink_to_fit();
+
+        }
+    }
+
+    //tworzy trójkąt Bernoulli(2,1)
+    void ber(int n){
+
+        //wartości początkowe
+        int a = 1;
+        int b = 2;
+
+        //zamienia je w stringi
+        string i1 = bitset< 512 >(a).to_string();
+        string i2 = bitset< 512 >(b).to_string();
+
+        //tworzy wektor w którym będzie string jednostkowy
+        vector <string> vecp;
+
+        //wpisuje jedynkę stringową do wektora jednostkowego
+        vecp.push_back(i1);
+
+        //wpisuje wektor jednostkowy do wektora stringów
+        vstr.push_back(vecp);
+
+        //wymazuje wektor buforowy
+        vecp.clear();
+	    vecp.shrink_to_fit();
+
+        //wpisuje 2 w pierwsze miejsce
+        vecp.push_back(i1);
+        vecp.push_back(i2);
+
+        //wpisuje wektor jednostkowy do wektora stringów
+        vstr.push_back(vecp);
+
+
+        //tworzy wektor buforowy
+        vector <string> vec;
+
+        //pętla kręci się dla ustalonego n
+        for(int i = 2; i <=n; i++){
+
+            //wpisuje 2 w pierwsze miejsce
+            vec.push_back(i1);
+
+            //trójkąty maja szerokość proporcjonalną do wysokości
+            //więc od niej uzależniamy szerokość
+            for(int j = 1; j <i; j++){
+
+                //wpisuje wynik do wektora buforowego
+                vec.push_back(addBinary(vstr[i-1][j-1],vstr[i-1][j]));
+            }
+
+            //wpisuje wynik do wektora buforowego
+            vec.push_back(bdmultiply(vstr[i-1][i-1],2));
+
+            //wpisuje wektor buforowy do wektora stringów
+            vstr.push_back(vec);
+
+
+            //wymazuje wektor buforowy
+            vec.clear();
+	        vec.shrink_to_fit();
+
+        }
+
+        cout <<vstr[3][3];
+
+    }
+
+    void bell( int f ) {
+
+        //wartości początkowe
+        int a = 1;
+
+        //zamienia je w stringi
+        string i1 = bitset< 512 >(a).to_string();
+        string i2 = bitset< 512 >(a).to_string();
+        
+        //tworzy wektor w którym będzie string jednostkowy
+        vector <string> vecp;
+
+        //wpisuje jedynkę stringową do wektora jednostkowego
+        vecp.push_back(i1);
+
+        //wpisuje wektor jednostkowy do wektora stringów
+        vstr.push_back(vecp);
+
+        //tworzy wektor buforowy
+        vector <string> vec;
+
+        vec.push_back(i1);
+        
+        //pętla kręci się dla ustalonego f
+        for(int i = 1; i <=f; i++){
+
+
+            //trójkąty maja szerokość proporcjonalną do wysokości
+            //więc od niej uzależniamy szerokość
+            for(int j = 1; j <=i; j++){
+
+                //wpisuje wynik do wektora buforowego
+                i2 = addBinary(vstr[i-1][j-1],vec[j-1]);
+                vec.push_back(i2);cout << i2 <<endl;
+
+            }
+
+            //wpisuje wektor buforowy do wektora stringów
+            vstr.push_back(vec);
+
+            //wymazuje wektor buforowy
+            vec.clear();
+	        vec.shrink_to_fit();
+
+            //wpisuję ostatni wyraz w pierwsze miejsce
+            vec.push_back(i2);
+
+            
+
+        }
+
+    }
+
 };
 

@@ -270,6 +270,38 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
         NULL,
         NULL);
 
+        CreateWindow("BUTTON",
+        "parzystosc hasoya",
+        WS_VISIBLE|WS_CHILD|WS_BORDER,
+        20,370,//położenie
+        200,20,//wielkość
+        hwnd,//hak
+        (HMENU) 16, //argument
+        NULL,
+        NULL);
+
+
+        CreateWindow("BUTTON",
+        "parzystosc Bernoulli",
+        WS_VISIBLE|WS_CHILD|WS_BORDER,
+        20,395,//położenie
+        200,20,//wielkość
+        hwnd,//hak
+        (HMENU) 17, //argument
+        NULL,
+        NULL);
+
+        CreateWindow("BUTTON",
+        "parzystosc Bell",
+        WS_VISIBLE|WS_CHILD|WS_BORDER,
+        20,420,//położenie
+        200,20,//wielkość
+        hwnd,//hak
+        (HMENU) 18, //argument
+        NULL,
+        NULL);
+
+
         AddMenus(hwnd);
 
 
@@ -911,6 +943,152 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             MessageBox(hwnd,textsaved,"OK",MB_OK); // wyświetla go
             break;
         }
+
+        case 16:{
+            int gwstat = 0; //tutaj będzie zapisana długość wpisanego stringa
+            gwstat = GetWindowText(textbox,&textsaved[0],20);//wkłada tekst do tablicy 
+
+            //tworzy obiekt klasy tablica
+            Tablica tbl;
+
+            int nt = std::stoi(textsaved);//zamienia tą tablicę w inta
+            int k = nt; //ilość iteracji
+            const int canvas_width  = nt;//ustalenie szerokości mapy
+            const int canvas_height = nt;//ustalenie wysokości
+            const double width = -nt/2; //współrzędna szerokości początkowego punktu
+            const double height = nt/2; //współrzędna wyskokości początkowego punktu
+            
+            //wywołuje odpowiednia metode
+            tbl.has(k);
+            
+            //generuje wektor parzystości
+            tbl.crtpstr();
+            
+            //tworzy kanwę
+            cartesian_canvas canvas(canvas_width,canvas_height);
+
+            //tworzy kanwę
+            struct point_t { double x,y; };
+            point_t pnt = {width, height };
+
+            //pętla dla wysokości
+            for(int i = 0; i <= k;i++){
+                
+                //pętla dla szerokości
+                for(int j = 0; j<=i; j++ ){
+                    //testuje czy w stringu jest 1, jeśli tak to rysuje bit
+                    if(1==tbl.test(i,j)){
+                        canvas.plot_pixel(pnt.x + j,pnt.y - i);
+                    }
+                }      
+            }
+            
+            //Zapisuje bmp
+            canvas.image().save_image("has.bmp");
+
+            //komunikuje zakończenie
+            MessageBox(hwnd,textsaved,"OK",MB_OK); // wyświetla go
+            break;
+        }
+
+
+
+        case 17:{
+            int gwstat = 0; //tutaj będzie zapisana długość wpisanego stringa
+            gwstat = GetWindowText(textbox,&textsaved[0],20);//wkłada tekst do tablicy 
+
+            //tworzy obiekt klasy tablica
+            Tablica tbl;
+
+            int nt = std::stoi(textsaved);//zamienia tą tablicę w inta
+            int k = nt; //ilość iteracji
+            const int canvas_width  = nt;//ustalenie szerokości mapy
+            const int canvas_height = nt;//ustalenie wysokości
+            const double width = -nt/2; //współrzędna szerokości początkowego punktu
+            const double height = nt/2; //współrzędna wyskokości początkowego punktu
+            
+            //wywołuje odpowiednia metode
+            tbl.ber(k);
+            
+            //generuje wektor parzystości
+            tbl.crtpstr();
+            
+            //tworzy kanwę
+            cartesian_canvas canvas(canvas_width,canvas_height);
+
+            //tworzy kanwę
+            struct point_t { double x,y; };
+            point_t pnt = {width, height };
+
+            //pętla dla wysokości
+            for(int i = 0; i <= k;i++){
+                
+                //pętla dla szerokości
+                for(int j = 0; j<=i; j++ ){
+                    //testuje czy w stringu jest 1, jeśli tak to rysuje bit
+                    if(1==tbl.test(i,j)){
+                        canvas.plot_pixel(pnt.x + j,pnt.y - i);
+                    }
+                }      
+            }
+            
+            //Zapisuje bmp
+            canvas.image().save_image("bern.bmp");
+
+            //komunikuje zakończenie
+            MessageBox(hwnd,textsaved,"OK",MB_OK); // wyświetla go
+            break;
+        }
+
+
+
+        case 18:{
+            int gwstat = 0; //tutaj będzie zapisana długość wpisanego stringa
+            gwstat = GetWindowText(textbox,&textsaved[0],20);//wkłada tekst do tablicy 
+
+            //tworzy obiekt klasy tablica
+            Tablica tbl;
+
+            int nt = std::stoi(textsaved);//zamienia tą tablicę w inta
+            int k = nt; //ilość iteracji
+            const int canvas_width  = nt;//ustalenie szerokości mapy
+            const int canvas_height = nt;//ustalenie wysokości
+            const double width = -nt/2; //współrzędna szerokości początkowego punktu
+            const double height = nt/2; //współrzędna wyskokości początkowego punktu
+            
+            //wywołuje odpowiednia metode
+            tbl.bell(k);
+            
+            //generuje wektor parzystości
+            tbl.crtpstr();
+            
+            //tworzy kanwę
+            cartesian_canvas canvas(canvas_width,canvas_height);
+
+            //tworzy kanwę
+            struct point_t { double x,y; };
+            point_t pnt = {width, height };
+
+            //pętla dla wysokości
+            for(int i = 0; i <= k;i++){
+                
+                //pętla dla szerokości
+                for(int j = 0; j<=i; j++ ){
+                    //testuje czy w stringu jest 1, jeśli tak to rysuje bit
+                    if(1==tbl.test(i,j)){
+                        canvas.plot_pixel(pnt.x + j,pnt.y - i);
+                    }
+                }      
+            }
+            
+            //Zapisuje bmp
+            canvas.image().save_image("bell.bmp");
+
+            //komunikuje zakończenie
+            MessageBox(hwnd,textsaved,"OK",MB_OK); // wyświetla go
+            break;
+        }
+
 
 
         case 99:{
