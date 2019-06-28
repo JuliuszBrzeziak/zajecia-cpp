@@ -11,6 +11,13 @@ class Telefon {
             friend istream& operator>> (istream &wejscie, Telefon &s);
        friend ostream & operator<< (ostream &wyjscie, const Telefon &s);
 
+    void * operator new(size_t size ){
+        cout << "tworzony nowy telefon" << endl;
+        void * p = ::new Telefon();
+
+        return p;
+    }
+
 
  };
  
@@ -32,11 +39,14 @@ istream& operator>> (istream &wejscie, Telefon &s)
   int main() {
  
    Telefon st, stu(10,"asd");
-   cin >> st;
-   cout << st; // wypisze nr indexu = 0, srednia ocen=0,
-               // ponieważ są to wartosci domyślne konstruktora :)
+
+    Telefon *t = new Telefon(12345,"tomek");
+
+   cout << st; 
   
-   cout << stu; // wypisze nr indexu = 10, srednia ocen=5
+   cout << stu; 
+
+   cout << *t;
    
    return 0;
  }
