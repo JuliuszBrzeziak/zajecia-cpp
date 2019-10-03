@@ -1132,3 +1132,4 @@ void AddMenus(HWND hwnd) {
     AppendMenuW(hMenubar, MF_POPUP, (UINT_PTR) hMenu, L"&Info");
     SetMenu(hwnd, hMenubar);
 }
+//test test test
