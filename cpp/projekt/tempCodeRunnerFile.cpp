@@ -1,0 +1,1 @@
+wc.hIconSm = LoadIcon( NULL, IDI_APPLICATION );
