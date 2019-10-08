@@ -7,7 +7,7 @@ class hello {
         // range = 200;
         System.out.println(range);
 
-        // Error code below. Why?
+        // Error code below. klklllklklklkWhy?
 
     }
 }
