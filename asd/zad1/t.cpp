@@ -8,9 +8,11 @@ using namespace std;
 int main () {
   int i=5, j=6, k;
   long l=10, m=5, n;
-  SortedList<int> ar;
+  SortedList<int> ar(2);
+  SortedList<int> arr(ar);
+  SortedList<int> arrr(move(arr));
   
-  k=ar.GetMax(i,j);
+  k=arrr.GetMax(i,j);
   //n=GetMax<long>(l,m);
   cout << k << endl;
   cout << n << endl;
