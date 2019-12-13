@@ -5,22 +5,11 @@
 
 #include <iostream>
 
-
-template<class T>
-class SortedList {
-
-    public:
-    template <class T>
-    SortedList();
-
-    private:
-    T a;
-
-    template <class T>
-    void SortedLis<T>::push(){
-        std::cout << "sad" << std::endl;
-    }       // Wstawia element 'x'
-
-};
+template <class T>
+T GetMax (T a, T b) {
+  T result;
+  result = (a>b)? a : b;
+  return (result);
+}
 
 #endif /* ARRAY_H_ */

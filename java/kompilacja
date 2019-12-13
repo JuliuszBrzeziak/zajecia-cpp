@@ -1,3 +1,0 @@
-javac --module-path $JAVA_FX --add-modules javafx.controls HelloFX.java
-
-java --module-path $JAVA_FX --add-modules javafx.controls HelloFX
