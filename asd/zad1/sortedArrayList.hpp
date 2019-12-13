@@ -18,6 +18,7 @@ T GetMax (T a, T b) {
   return (result);
 }
 //konstruktoty
+//NEED: dopisać bebechy konstruktorów
 SortedArrayList(){
     
 };
@@ -29,7 +30,9 @@ SortedArrayList(int a){    pojemnosc = MIN_POJEMNOSC;
 };
 SortedArrayList(const SortedArrayList<T> &a){} //kopiujący
 SortedArrayList(SortedArrayList && ){}
-~SortedArrayList(){};
+~SortedArrayList(){
+    free(element);
+};
 /*
 //operatory
 T &operator = (const T &t){ //kopiujący
@@ -43,7 +46,12 @@ T &operator = ( T &&t){ //przenoszący
 */
 
 
-    void push(T x);       // Wstawia element 'x'
+    void push(T x){// Wstawia element 'x'
+        if (wielkosc >= pojemnosc)
+            resize();
+        *(element + wielkosc++) = value;
+    }  
+
     T pop();               // Zwraca i usuwa pierwszy (najmniejszy) element
     size_t erase(size_t i); // Usuwa element na pozycji 'i'
     size_t find(T x);  // Zwraca pozycję elementu o wartości 'x' lub -1 gdy nie znaleziono
@@ -53,6 +61,17 @@ T &operator = ( T &&t){ //przenoszący
                            // Scala dwie posortowane listy i zwraca posortowaną listę
     void unique();         // Usuwa sąsiadujące duplikaty
     void print();          // Wypisuje elementy listy (w porządku rosnącym)*/
+
+    
+    void SortedArrayList<T>::resize() {
+    size_t capacity = pojemnosc*GROWTH_FACTOR;
+    T *tmp = (T*)realloc(element, capacity * sizeof(*element));
+    if (!tmp)
+        throw std::bad_alloc();
+    element = tmp;
+    pojemnosc = capacity;
+}
+
 
     private:
         size_t wielkosc;
