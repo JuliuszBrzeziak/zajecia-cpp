@@ -11,7 +11,9 @@ int main () {
   SortedList<int> ar(2);
   SortedList<int> arr(ar);
   SortedList<int> arrr(move(arr));
-  
+  SortedList<int> ab = SortedList<int>(1);
+
+
   k=arrr.GetMax(i,j);
   //n=GetMax<long>(l,m);
   cout << k << endl;
