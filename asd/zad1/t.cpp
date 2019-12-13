@@ -1,6 +1,6 @@
 // function template
 #include <iostream>
-#include "SortedList.hpp"
+#include "sortedArrayList.hpp"
 using namespace std;
 
 
@@ -8,10 +8,10 @@ using namespace std;
 int main () {
   int i=5, j=6, k;
   long l=10, m=5, n;
-  SortedList<int> ar(2);
-  SortedList<int> arr(ar);
-  SortedList<int> arrr(move(arr));
-  SortedList<int> ab = SortedList<int>(1);
+  SortedArrayList<int> ar(2);
+  SortedArrayList<int> arr(ar);
+  SortedArrayList<int> arrr(move(arr));
+  SortedArrayList<int> ab = SortedArrayList<int>(1);
 
 
   k=arrr.GetMax(i,j);
