@@ -7,6 +7,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 template <class T>
 class SortedArrayList {
 
@@ -23,16 +25,27 @@ SortedArrayList(){
     
 };
 SortedArrayList(int a){    pojemnosc = MIN_POJEMNOSC;
-    wielkosc = 0;
+    wielkosc = a;
     element = (T*)malloc(pojemnosc * sizeof(*element));
     if (!element)
         throw std::bad_alloc();
 };
-SortedArrayList(const SortedArrayList<T> &a){} //kopiujący
+SortedArrayList( SortedArrayList<T> &a){//kopiujący
+    cout << "ale" << endl;
+    //this->wielkosc = a.get();
+    /*element = (T*)malloc(a.wielkosc * sizeof(*element));
+    element = a.element;
+    if (!element)
+        throw std::bad_alloc();*/
+        //cout << a.wielkosc << endl;
+} 
 SortedArrayList(SortedArrayList && ){}
 ~SortedArrayList(){
     free(element);
 };
+T get(){
+    return wielkosc;
+}
 /*
 //operatory
 T &operator = (const T &t){ //kopiujący
@@ -46,7 +59,7 @@ T &operator = ( T &&t){ //przenoszący
 */
 
 
-    void push(T x){// Wstawia element 'x'
+    void push(T value){// Wstawia element 'x'
         if (wielkosc >= pojemnosc)
             resize();
         *(element + wielkosc++) = value;
@@ -63,7 +76,14 @@ T &operator = ( T &&t){ //przenoszący
     void print();          // Wypisuje elementy listy (w porządku rosnącym)*/
 
     
-    void SortedArrayList<T>::resize() {
+
+
+
+    public:
+        size_t wielkosc;
+        size_t pojemnosc;
+        T* element;
+    void resize() {
     size_t capacity = pojemnosc*GROWTH_FACTOR;
     T *tmp = (T*)realloc(element, capacity * sizeof(*element));
     if (!tmp)
@@ -71,14 +91,6 @@ T &operator = ( T &&t){ //przenoszący
     element = tmp;
     pojemnosc = capacity;
 }
-
-
-    private:
-        size_t wielkosc;
-        size_t pojemnosc;
-        T* element;
-        void resize();
-
 
 };
 #endif /* ARRAY_H_ */
