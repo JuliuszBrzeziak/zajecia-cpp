@@ -34,7 +34,10 @@ public class Abc {
 
     Test<Double> li = Lin::linn;
     li.test(3.0);
-apply(ar,li);
+
+    Test<Double> li2 = new Lin2()::linn2;
+    li2.test(4.0);
+    apply(ar,li2);
 
 
 
@@ -116,6 +119,15 @@ class Lin {
         return (c*c*c);
     }
 
+}
 
+
+class Lin2 {
+    private Double a,b;
+
+
+    public Double linn2(Double c){
+        return (c*c*c*c);
+    }
 
 }
