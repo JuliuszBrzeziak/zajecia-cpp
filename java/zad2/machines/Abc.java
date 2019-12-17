@@ -7,7 +7,17 @@ public class Abc {
 
        System.out.println(testa.test(4.0));
 
-       plot(0,4,testa);
+       double[] ar={0,0,0,0};
+       apply(ar,testa);
+       //plot(0,4,testa);
+       Test<Double> testb = new Test<Double>(){
+           @Override
+        public Double test(Double b){
+            return b * 7;
+            }
+
+       };
+       apply(ar,testb);
     }
 
 
@@ -23,6 +33,19 @@ public class Abc {
             x += dx;
         }
      }
+
+     public static void apply(double[] array, Test<Double> f) {
+         int arl = array.length;
+         if(arl == 0){
+             System.out.println("arl == 0");
+         }    
+
+         for(int i = 0; i<array.length;i++){
+             array[i] = f.test((double)i);
+             System.out.println(array[i]);
+             
+         }
+      }
 
 
 }
