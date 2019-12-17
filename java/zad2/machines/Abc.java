@@ -17,10 +17,22 @@ public class Abc {
             }
 
        };
-       apply(ar,testb);
+       
+            Runner runner = new Runner();/*
+            runner.test( a -> {
+                System.out.println("Hello there.");
+                System.out.println("And hello again.");
+                return 7 + a;
+            });*/
+
+        Test<Double> tt = ( a -> {
+                System.out.println("Hello there.");
+                System.out.println("And hello again.");
+                return 7 + a*a;
+            });
+    apply(ar,tt);
+
     }
-
-
     public static void plot(double xmin, double xmax, Test<Double> f) {
         int n = 20;
         double x = xmin;
@@ -60,9 +72,25 @@ class Multi implements Test<Double> {
         @Override
         public Double test(Double b){
             return b * a;
-            };
+        };
 
 
 }
- 
+
+class Runner implements Test<Double>{
+    public int run(Test e) {
+        //Double value = e.test(5.0);
+        System.out.println("Return value is: " );
+        return 0;
+    }
+
+
+        @Override
+        public Double test(Double b){
+            return b ;
+        };
+
+
+}
+
 
