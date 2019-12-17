@@ -18,6 +18,14 @@ public class App {
         
         outputInfo(mach1);
         outputInfo(person1);
+
+            Info2<Integer> in = new Info2<Integer>() {
+            @Override
+            public Integer process(Integer arg1)
+            {
+                return arg1;
+            }
+        };
     }
     
     private static void outputInfo(Info info) {
