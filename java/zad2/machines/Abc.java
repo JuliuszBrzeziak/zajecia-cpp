@@ -16,10 +16,10 @@ public class Abc {
         double x = xmin;
         double dx = (xmax - xmin) / n;
         System.out.println(dx);
-        System.out.println("x0" + x);
+        System.out.println("x0 " + x);
         for(int i = 0; i < 20; i++){
-            System.out.println("f" + f.test(x));
-            System.out.println("x" + x);
+            System.out.println("f " + f.test(x));
+            System.out.println("x " + x);
             x += dx;
         }
      }
