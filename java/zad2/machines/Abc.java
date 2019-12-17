@@ -15,25 +15,34 @@ public class Abc {
             }
         };
 
-        Computation<Double> cmp = new Computation<Double>(){
-            @Override
-            public Double compute(Double number1){
-                return 3 * number1;
-            }
-        };
+        //Computation<Double> cmp = new Computation<Double>(){};
  
         System.out.println(addTwoIntegers.sum(10,30));
         System.out.println(addTwoStrings.sum("Hello!","World"));
-        System.out.println(cmp.compute(3.0));
+        
  
+    /*
+        Computation<Integer> cmp = new Multi(3){
+            @Override
+            public Integer compute(Integer b){
+                return this.a * b;
+            }
+        };
+        System.out.println(cmp.compute(3.0));*/
+
+        Multi m = new Multi(3);
+        Computation<Integer> cmp = new Multi(3);
     }
-}
+};
 
 class Multi {
-    int a;
+    private int a;
     public Multi(int a){
         this.a = a;
     }
+
+    
+
 }
  
 interface Sum<T,U,V>{
