@@ -30,9 +30,22 @@ public class Abc {
                 System.out.println("And hello again.");
                 return 7 + a*a;
             });
-    apply(ar,tt);
+    
+
+    Test<Double> li = Lin::linn;
+    li.test(3.0);
+apply(ar,li);
+
+
+
+
 
     }
+
+
+
+
+
     public static void plot(double xmin, double xmax, Test<Double> f) {
         int n = 20;
         double x = xmin;
@@ -94,3 +107,15 @@ class Runner implements Test<Double>{
 }
 
 
+class Lin {
+    private Double a,b;
+
+    
+
+    public static Double linn(Double c){
+        return (c*c*c);
+    }
+
+
+
+}
