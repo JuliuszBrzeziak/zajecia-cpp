@@ -2,7 +2,7 @@ class MyException extends Exception {
    String com;
 
    public MyException(String a, String b) {
-      com = x;
+      com = b;
    }
 
    public String toString() {
