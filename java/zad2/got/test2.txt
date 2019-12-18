@@ -1,0 +1,42 @@
+0
+1import java.io.*;
+2
+3public class file3 {
+4
+5    public static void main(String[] args)throws IOException{
+6        File file = new File(args[0]);
+7        String filePath = args[1];
+8            int number = 1234567;
+9            int i = 0;
+10            //FileWriter fileWriter = null;
+11
+12
+13        FileWriter fileWriter =null;
+14        BufferedReader br=null;
+15        try { br = new BufferedReader(new FileReader(file));
+16             fileWriter = new FileWriter(filePath);
+17            String line;
+18
+19
+20            while ((line = br.readLine()) != null) {
+21                System.out.println(line);
+22                fileWriter.write(Integer.toString(i ));
+23                fileWriter.write(line+"\n");
+24                i++;
+25            }
+26
+27
+28        } finally {
+29            if (br != null) {
+30                br.close();
+31            }
+32            if (fileWriter != null) {
+33                fileWriter.close();
+34            }
+35        }
+36    }
+37    
+38
+39}
+40
+41
