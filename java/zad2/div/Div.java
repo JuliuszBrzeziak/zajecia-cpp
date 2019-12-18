@@ -10,7 +10,8 @@ public class Div {
         
 
                 try {
-            d.dig(1,0);
+                    System.out.println(d.dig(0,0));
+            
         }
         catch (IOException e) {
             System.out.println("aaaa");
@@ -24,23 +25,18 @@ public class Div {
             Div0 instance = new Div0(1.0,b);
         }
         catch (IOException e) {
-                        
-System.out.println("asssaaa");
-            e.printStackTrace();
+            e.getMessage();
         }
         return a/b;
     }
 
-    private void methodWithCheckedException() throws IOException {
-        throw new IOException();
-    }
+
 }
 class Div0 extends java.lang.Exception {
 
     String com;
     public  Div0(double a, double b) throws IOException {
         if(b==0.0){
-            System.out.println("asssaaa");
             throw new IOException();
         };
     }
