@@ -2,14 +2,16 @@ public class Abc {
     
     public static void main(String[] args) {
 
-
+        //interfejs
        Test<Double> testa = new Multi(3.0);
-
        System.out.println(testa.test(4.0));
+
+
 
        double[] ar={0,0,0,0};
        apply(ar,testa);
-       //plot(0,4,testa);
+       
+       //klasa anonimowa
        Test<Double> testb = new Test<Double>(){
            @Override
         public Double test(Double b){
@@ -17,36 +19,34 @@ public class Abc {
             }
 
        };
+       apply(ar,testb);
+       //plot(0,20,testb);
        
-            Runner runner = new Runner();/*
-            runner.test( a -> {
-                System.out.println("Hello there.");
-                System.out.println("And hello again.");
-                return 7 + a;
-            });*/
+
+
+
+        //lambda
+        Runner runner = new Runner();
 
         Test<Double> tt = ( a -> {
                 System.out.println("Hello there.");
                 System.out.println("And hello again.");
                 return 7 + a*a;
             });
-    
 
+        apply(ar,tt);
+        plot(0,20,tt);
+    
+    //metoda statyczna
     Test<Double> li = Lin::linn;
     li.test(3.0);
 
+    //metoda niestatyczna
     Test<Double> li2 = new Lin2()::linn2;
     li2.test(4.0);
     apply(ar,li2);
 
-
-
-
-
     }
-
-
-
 
 
     public static void plot(double xmin, double xmax, Test<Double> f) {
@@ -56,8 +56,8 @@ public class Abc {
         System.out.println(dx);
         System.out.println("x0 " + x);
         for(int i = 0; i < 20; i++){
-            System.out.println("f " + f.test(x));
-            System.out.println("x " + x);
+            System.out.println("x " + x+"f " + f.test(x));
+           
             x += dx;
         }
      }
@@ -90,7 +90,6 @@ class Multi implements Test<Double> {
             return b * a;
         };
 
-
 }
 
 class Runner implements Test<Double>{
@@ -113,7 +112,6 @@ class Runner implements Test<Double>{
 class Lin {
     private Double a,b;
 
-    
 
     public static Double linn(Double c){
         return (c*c*c);
