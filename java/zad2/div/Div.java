@@ -9,7 +9,12 @@ public class Div {
 
         
 
+                try {
             d.dig(1,0);
+        }
+        catch (IOException e) {
+            System.out.println("aaaa");
+            e.printStackTrace();
         }
 
     }
