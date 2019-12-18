@@ -11,7 +11,7 @@ public class file2 {
             //FileWriter fileWriter = null;
 
         try (var br = new BufferedReader(new FileReader(file));
-            FileWriter fileWriter = new FileWriter(filePath);
+            var fileWriter = new FileWriter(filePath);
         ) {
             String line;
 

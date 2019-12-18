@@ -1,46 +1,42 @@
-0import java.io.BufferedReader;
-1import java.io.File;
-2import java.io.FileNotFoundException;
-3import java.io.FileReader;
-4import java.io.IOException;
-5
-6
-7public class file {
-8
-9    public static void main(String[] args) {
-10
-11        File file = new File("test.txt");
-12        
-13        BufferedReader br = null;
-14        
-15        try {
-16            FileReader fr = new FileReader(file);
-17            br = new BufferedReader(fr);
-18            
-19            String line;
-20            
-21            while( (line = br.readLine()) != null ) {
-22                System.out.println(line);
-23            }
-24            
-25        } catch (FileNotFoundException e) {
-26            System.out.println("File not found: " + file.toString());
-27        } catch (IOException e) {
-28            System.out.println("Unable to read file: " + file.toString());
-29        }
-30        finally {
-31            try {
-32                br.close();
-33            } catch (IOException e) {
-34                System.out.println("Unable to close file: " + file.toString());
-35            }
-36            catch(NullPointerException ex) {
-37                // File was probably never opened!
-38            }
-39        }
-40        
-41        
-42
-43    }
-44
-45}
+0
+1import java.io.*;
+2
+3public class file3 {
+4
+5    public static void main(String[] args)throws IOException{
+6        File file = new File(args[0]);
+7        String filePath = args[1];
+8            int number = 1234567;
+9            int i = 0;
+10            //FileWriter fileWriter = null;
+11
+12
+13        FileWriter fileWriter =null;
+14        BufferedReader br=null;
+15        try { br = new BufferedReader(new FileReader(file));
+16             fileWriter = new FileWriter(filePath);
+17            String line;
+18
+19
+20            while ((line = br.readLine()) != null) {
+21                System.out.println(line);
+22                fileWriter.write(Integer.toString(i ));
+23                fileWriter.write(line+"\n");
+24                i++;
+25            }
+26
+27
+28        } finally {
+29            if (br != null) {
+30                br.close();
+31            }
+32            if (fileWriter != null) {
+33                fileWriter.close();
+34            }
+35        }
+36    }
+37    
+38
+39}
+40
+41

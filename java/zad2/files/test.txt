@@ -1,46 +1,42 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
+
+public class file3 {
+
+    public static void main(String[] args)throws IOException{
+        File file = new File(args[0]);
+        String filePath = args[1];
+            int number = 1234567;
+            int i = 0;
+            //FileWriter fileWriter = null;
 
 
-public class file {
-
-    public static void main(String[] args) {
-
-        File file = new File("test.txt");
-        
-        BufferedReader br = null;
-        
-        try {
-            FileReader fr = new FileReader(file);
-            br = new BufferedReader(fr);
-            
+        FileWriter fileWriter =null;
+        BufferedReader br=null;
+        try { br = new BufferedReader(new FileReader(file));
+             fileWriter = new FileWriter(filePath);
             String line;
-            
-            while( (line = br.readLine()) != null ) {
-                System.out.println(line);
-            }
-            
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + file.toString());
-        } catch (IOException e) {
-            System.out.println("Unable to read file: " + file.toString());
-        }
-        finally {
-            try {
-                br.close();
-            } catch (IOException e) {
-                System.out.println("Unable to close file: " + file.toString());
-            }
-            catch(NullPointerException ex) {
-                // File was probably never opened!
-            }
-        }
-        
-        
 
+
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                fileWriter.write(Integer.toString(i ));
+                fileWriter.write(line+"\n");
+                i++;
+            }
+
+
+        } finally {
+            if (br != null) {
+                br.close();
+            }
+            if (fileWriter != null) {
+                fileWriter.close();
+            }
+        }
     }
+    
 
 }
+
+
