@@ -13,7 +13,7 @@ class Machine implements Computation {
         
         System.out.println("Second constructor running %d" + name + code);
         // No longer need following liness, since we're using the other constructor above.
-        //this.name = name;ssssgi
+        //this.name = name;sssssssssgi
     }
     
     public Machine(String name, int code) {
