@@ -12,7 +12,7 @@ class Machine implements Computation {
         this(name, 0);
         
         System.out.println("Second constructor running %d" + name + code);
-        // No longer need following line, since we're using the other constructor above.
+        // No longer need following liness, since we're using the other constructor above.
         //this.name = name;ssssgi
     }
     
