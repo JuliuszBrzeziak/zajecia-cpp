@@ -15,6 +15,7 @@ w drugim ma używać wskaźnika przesuwającego się z bajtu na bajt.
 bool drukowalne(const void * buf, int len){
 
     char *wsk;
+    wsk = buf;
 
     for(int i = 0; i < len; i++){
 
