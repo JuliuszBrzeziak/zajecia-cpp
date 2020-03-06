@@ -1,0 +1,4 @@
+lspci // wyświetla podłączone komp 
+/sbin/ethtool ethX // sprawdza podłączoną kartę sieciową
+/sbin/ethtool ethX
+sudo ifconfig ethX up włącza kartę 
