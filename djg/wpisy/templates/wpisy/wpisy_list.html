@@ -6,6 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>wpisy_list</h1>
+    <h1>wpisy_lidssssst</h1>
+    <p>{{wpis.body}}</p>
+    <div class="wpsiy">
+        <p>{{wpis.body}}</p>
+        {% for wpis in wpisy %}
+
+            <div class="wpis">
+                <h2> <a href="#"> {{wpis.title}} </a></h2>
+                <p>{{wpis.body}}</p>
+                <p>{{wpis.date}}</p>
+            </div>
+        {% ednfor %}
+         
+    </div>
 </body>
 </html>
