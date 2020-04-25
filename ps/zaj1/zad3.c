@@ -18,11 +18,18 @@ bool drukowalne(const void * buf, int len){
     wsk = buf;
 
     for(int i = 0; i < len; i++){
+        printf("%d ",*(wsk+i));
 
     }
 
 }
 
 int main (){
+
+    const void *buf;
+    buf = "sazda ";
+    drukowalne(buf,4);
+    //printf("asda");
+    return 0;
 
 }
