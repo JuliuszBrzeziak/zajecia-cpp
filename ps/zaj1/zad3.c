@@ -14,13 +14,16 @@ w drugim ma używać wskaźnika przesuwającego się z bajtu na bajt.
 
 bool drukowalne(const void * buf, int len){
 
-    char *wsk;
+    const char *wsk;
     wsk = buf;
 
     for(int i = 0; i < len; i++){
-        printf("%d ",*(wsk+i));
+        if( *(wsk+i)< 32 || *(wsk+i)>126){
+            return false;
+        }
 
     }
+    return true;
 
 }
 
@@ -28,7 +31,10 @@ int main (){
 
     const void *buf;
     buf = "sazda ";
-    drukowalne(buf,4);
+    if(drukowalne(buf,4)){
+        printf("tak\n");
+    }
+    
     //printf("asda");
     return 0;
 
