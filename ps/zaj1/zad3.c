@@ -27,12 +27,31 @@ bool drukowalne(const void * buf, int len){
 
 }
 
+
+bool drukowalne2(const void * buf, int len){
+
+    char wsk[100] = buf;
+    //wsk[0] = buf;
+
+    for(int i = 0; i < len; i++){
+        printf("%d",wsk[i]);
+        if( wsk[i]< 32 || wsk[i]>126){
+            return false;
+        }
+
+    }
+    return true;
+
+}
+
 int main (){
 
     const void *buf;
     buf = "sazda ";
-    if(drukowalne(buf,4)){
-        printf("tak\n");
+    if(drukowalne2(buf,4)){
+        printf("tak\n-");
+    } else {
+        printf("nie");
     }
     
     //printf("asda");

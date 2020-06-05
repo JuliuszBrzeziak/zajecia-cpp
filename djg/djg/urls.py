@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('jeden',views.jeden),
     path('',views.mainn),
-    path('wpisy/', include('wpisy.urls')),
+    path('wpisy_list', include('wpisy.urls')),
 ]
