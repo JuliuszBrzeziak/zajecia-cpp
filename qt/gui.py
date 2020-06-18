@@ -1,6 +1,5 @@
-from __future__ import unicode_literals
-from PyQt5.QtGui import QPainter, QColor
-from PyQt5.QtCore import QRect
+from ksztalty import Ksztalty, Ksztalt
+from PyQt5.QtWidgets import QHBoxLayout, QCheckBox, QButtonGroup, QVBoxLayout
 
 
 class Ui_Widget(object):
@@ -8,32 +7,30 @@ class Ui_Widget(object):
 
     def setupUi(self, Widget):
 
-        self.ksztalt = Ksztalty.Rect  # kształt do narysowania
-        self.prost = QRect(1, 1, 101, 101)  # współrzędne prostokąta
-        # kolor obramowania i wypełnienia w formacie RGB
-        self.kolorO = QColor(0, 0, 0)
-        self.kolorW = QColor(200, 30, 40)
+        # widgety rysujące kształty, instancje klasy Ksztalt
+        self.ksztalt1 = Ksztalt(self, Ksztalty.Polygon)
+        self.ksztalt2 = Ksztalt(self, Ksztalty.Ellipse)
+        self.ksztaltAktywny = self.ksztalt1
 
-        self.resize(102, 102)
+        # przyciski CheckBox ###
+        uklad = QVBoxLayout()  # układ pionowy
+        self.grupaChk = QButtonGroup()
+        for i, v in enumerate(('Kwadrat', 'Koło', 'Trójkąt', 'Linia')):
+            self.chk = QCheckBox(v)
+            self.grupaChk.addButton(self.chk, i)
+            uklad.addWidget(self.chk)
+        self.grupaChk.buttons()[self.ksztaltAktywny.ksztalt].setChecked(True)
+        # CheckBox do wyboru aktywnego kształtu
+        self.ksztaltChk = QCheckBox('<=')
+        self.ksztaltChk.setChecked(True)
+        uklad.addWidget(self.ksztaltChk)
+
+        # układ poziomy dla kształtów oraz przycisków CheckBox
+        ukladH1 = QHBoxLayout()
+        ukladH1.addWidget(self.ksztalt1)
+        ukladH1.addLayout(uklad)
+        ukladH1.addWidget(self.ksztalt2)
+        # koniec CheckBox ###
+
+        self.setLayout(ukladH1)  # przypisanie układu do okna głównego
         self.setWindowTitle('Widżety')
-
-    def paintEvent(self, e):
-        qp = QPainter()
-        qp.begin(self)
-        self.rysujFigury(e, qp)
-        qp.end()
-
-    def rysujFigury(self, e, qp):
-        qp.setPen(self.kolorO)  # kolor obramowania
-        qp.setBrush(self.kolorW)  # kolor wypełnienia
-        qp.setRenderHint(QPainter.Antialiasing)  # wygładzanie kształtu
-
-        if self.ksztalt == Ksztalty.Rect:
-            qp.drawRect(self.prost)
-        elif self.ksztalt == Ksztalty.Ellipse:
-            qp.drawEllipse(self.prost)
-
-
-class Ksztalty:
-    """ Klasa pomocnicza, symuluje typ wyliczeniowy """
-    Rect, Ellipse, Polygon, Line = range(4)

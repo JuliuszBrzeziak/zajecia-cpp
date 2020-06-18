@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: n2edm
+Version: 1.0.2
+Summary: Package created for n2EDM experiment to schedule mesurementr.
+Home-page: https://gitlab.com/n2edm/gui_popczak
+Author: Arkadiusz Popczak
+Author-email: arepop@arepop.com
+License: UNKNOWN
+Description: README TBD
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown

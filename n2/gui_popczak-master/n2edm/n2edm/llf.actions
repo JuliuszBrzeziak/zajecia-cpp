@@ -1,0 +1,70 @@
+id253806031008124635852779938710124240008 =
+{
+    name = "Infinit";
+    start = "Start";
+    stop = "";
+    time_distance = "99999";
+    parameter = "";
+    color = "#5555ff";
+    group = "Group";
+};
+id212598006749494812964668769324172281495 =
+{
+    name = "Normal";
+    start = "Start";
+    stop = "Stop";
+    time_distance = "30";
+    parameter = "";
+    color = "#ff55ff";
+    group = "Group";
+};
+id236921033340838240556570859703241237746 =
+{
+    name = "1a";
+    start = "23";
+    stop = "23";
+    time_distance = "23";
+    parameter = "";
+    color = "#55aa00";
+    group = "...";
+};
+id100585988440892174270656664890089848349 =
+{
+    name = "T1";
+    start = "T1";
+    stop = "";
+    time_distance = "99999";
+    parameter = "";
+    color = "#ffff00";
+    group = "Group";
+};
+id123583583615668073932580026029845223525 =
+{
+    name = "1a44";
+    start = "23";
+    stop = "23";
+    time_distance = "23";
+    parameter = "";
+    color = "#55ff7f";
+    group = "...";
+};
+id11723537841729008416415623571149464290 =
+{
+    name = "Test";
+    start = "a";
+    stop = "a";
+    time_distance = "20";
+    parameter = "a";
+    color = "#ff557f";
+    group = "Group";
+};
+id306887102534345359538370726286459279058 =
+{
+    name = "R1";
+    start = "F1";
+    stop = "";
+    time_distance = "99999";
+    parameter = "";
+    color = "#00ffff";
+    group = "Group";
+};
